@@ -1,0 +1,102 @@
+@import '_functions.scss';
+
+section.seo-text {
+    font-size: em(18);
+    color: #000;
+    letter-spacing: em(1);
+    font-family: inherit;
+    video,
+    iframe {
+      margin: 0 auto;
+      display: block;
+    }
+    p {
+      margin-bottom: em(15, 18);
+      font-size: inherit;
+      letter-spacing: inherit;
+      font-family: inherit;
+      color: inherit;
+    }
+    ul,
+    ol {
+      margin-bottom: em(5, 18);
+      font-size: inherit;
+      font-family: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+    }
+    ul {
+      list-style: inside disc;
+    }
+    ol {
+      list-style: inside decimal;
+    }
+    li {
+      margin-bottom: em(5, 18);
+      font-size: inherit;
+      font-family: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+    }
+    p *,
+    li * {
+      font-size: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      font-family: inherit;
+    }
+    a:not(.btn) {
+      text-decoration: underline;
+    }
+    a:not(.btn):hover {
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    h1 {
+      font-size: em(30, 18);
+      margin-bottom: em(10, 18);
+      margin-top: em(5, 18);
+    }
+    h2 {
+      font-size: em(28, 18);
+      margin-bottom: em(10, 18);
+      margin-top: em(5, 18);
+    }
+    h3 {
+      font-size: em(26, 18);
+      margin-bottom: em(10, 18);
+      margin-top: em(5, 18);
+    }
+    h4 {
+      font-size: em(24, 18);
+      margin-bottom: em(10, 18);
+      margin-top: em(5, 18);
+    }
+    h5 {
+      font-size: em(22, 18);
+      margin-bottom: em(10, 18);
+      margin-top: em(5, 18);
+    }
+    h6 {
+      font-size: em(20, 18);
+      margin-bottom: em(10, 18);
+      margin-top: em(5, 18);
+    }
+}
+
+
+section.page-404 {
+    text-align: center;
+    min-height: calc(var(--vh, 100vh));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+section.page-404 p {
+	font-size: 22px;
+	margin-bottom: 15px;
+}
