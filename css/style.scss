@@ -63,7 +63,7 @@ a {
 
 header {
     &.fixed-header {
-        padding: em(10) 0;
+        
     }
     .logo {
         display: flex;
@@ -77,12 +77,13 @@ header {
         $bar-height: 2px;
         $bar-spacing: 7px;
         $bar-color: #fff;
+        $breakpoint: 1000px;
         position: relative;
         background: $bar-color;
         transition: all 0ms 300ms;
         margin: 0 15px;
         display: none;
-        @media(max-width: 1000px) {
+        @media(max-width: $breakpoint) {
             display: flex;
         }
         &,
