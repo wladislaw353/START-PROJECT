@@ -32,6 +32,16 @@ body::-webkit-scrollbar {
     width: 10px;
 }
 
+.preloader {
+    position: fixed;
+    left: 0;
+    z-index: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+}
+
 a {
     color: inherit;
     display: inline-block;
@@ -66,8 +76,9 @@ header {
         $bar-width: 35px;
         $bar-height: 2px;
         $bar-spacing: 7px;
+        $bar-color: #fff;
         position: relative;
-        background: rgba(255, 255, 255, 1);
+        background: $bar-color;
         transition: all 0ms 300ms;
         margin: 0 15px;
         display: none;
@@ -85,7 +96,7 @@ header {
             position: absolute;
             left: 0;
             bottom: $bar-spacing;
-            background: rgba(255, 255, 255, 1);
+            background: $bar-color;
             transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
         }
         &:after {
@@ -93,7 +104,7 @@ header {
             position: absolute;
             left: 0;
             top: $bar-spacing;
-            background: rgba(255, 255, 255, 1);
+            background: $bar-color;
             transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
         }
         &.active {

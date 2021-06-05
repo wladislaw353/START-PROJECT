@@ -15,16 +15,17 @@
 <body>
 
     <div class="preloader"></div>
-    <div data-modalq-opener="1" data-modalq-target="1212wwq">dfsdfsdf</div>
+    <div data-modalq-opener="1" data-modalq-target="">Open Modal 1</div>
     <header>
         <div class="holder">
             <a href="/" class="logo">
                 <img src="/img/logo.svg" alt="">
             </a>
+            <div class="burger"></div>
             <nav>
-                <ul class="flex-container">
+                <ul class="flex-container" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
                     <li>
-                        <a href=""></a>
+                        <a href="" itemprop="discussionUrl"></a>
                     </li>
                 </ul>
             </nav>
@@ -50,8 +51,8 @@
         </div>
         <div class="modalq" id="modalq-1">
             <form id="formx-1">
-                <input type="text" name="name" placeholder="Имя, Фамилия" autocomplete="name" required>
-                <input type="tel" name="phone" class="phone-mask" placeholder="Номер телефона" autocomplete="tel" inputmode="numeric" required>
+                <input type="text" name="nfame" placeholder="* Имя" autocomplete="given-name" required>
+                <input type="tel" name="phone" class="phone-mask" placeholder="* Номер телефона" autocomplete="tel" inputmode="numeric" required>
                 <input type="email" name="email" placeholder="E-mail" inputmode="email" autocomplete="email">
                 <textarea name="comment" placeholder="Комментарий"></textarea>
                 <input type="hidden" name="target">

@@ -91,6 +91,8 @@ $(document).ready(()=> {
         if ($('.modalq-wrapper').has(e.target).length === 0) modalqClose()
     })
 
+    $('[href="#"]').removeAttr('href')
+
     let phoneMask = '+38(999)999-99-99'
 
     // CHECK LOCATION
