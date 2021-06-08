@@ -7,7 +7,7 @@
 <br> - подключен шрифт Open Sans
 <br> - подключен Swiper c unpkg CDN
 <br> - подключена jQuery c Google CDN
-<br> - февикон img/favicon.png
+<br> - февикон <code>img/favicon.png</code>
 <br> - прелоадер - .preloader
 <br> - ниже пример кнопки для открытия модалки
 <br> - меню с микроразметкой
