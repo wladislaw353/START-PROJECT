@@ -8,7 +8,7 @@
 <br> - подключен Swiper c unpkg CDN
 <br> - подключена jQuery c Google CDN
 <br> - февикон <code>img/favicon.png</code>
-<br> - прелоадер - .preloader
+<br> - прелоадер - <code>.preloader</code>
 <br> - ниже пример кнопки для открытия модалки
 <br> - меню с микроразметкой
 <br> - 2 модалки (с формой и "спасибо за заявку")
