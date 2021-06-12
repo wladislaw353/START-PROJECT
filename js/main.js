@@ -39,6 +39,28 @@ $(document).ready(()=> {const wstyle=["padding: 1rem;","font-size: 20px;","font-
             swiper1.slideNext()
         })
 	}
+
+
+    // ACCORDION
+    $('.accordion .item .header').click(function() {
+        if ($(this).parent().hasClass('active')) {
+            $(this).parent().removeClass('active').find('.content').slideUp()
+        } else {
+            if (!$(this).parent().parent().hasClass('multiple')) {
+                $('.accordion .item').removeClass('active').find('.content').slideUp()
+            }
+            $(this).parent().addClass('active').find('.content').slideDown()
+        }
+    })
+
+
+    // TABS
+    $('.tab-container .tab-nav span').click(function() {
+        $('.tab-container .tab-nav span').removeClass('active')
+        $(this).addClass('active')
+        $('.tab-container .tab-content .item').hide()
+        $(`.tab-container .tab-content .item:nth-child(${parseInt($(this).index()) + 1})`).fadeIn()
+    })
     
 
     // FORMS
@@ -74,7 +96,6 @@ $(document).ready(()=> {const wstyle=["padding: 1rem;","font-size: 20px;","font-
         $('input[name="target"]').val( ($(this).attr('data-modalq-target')) ? $(this).data('modalq-target') : $(this).data('target') )
         window.location.hash = '#modal'
     })
-    
     function modalqClose() {
         $('.modalq').fadeOut()
         $('.modalq-wrapper').fadeOut()

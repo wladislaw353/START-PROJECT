@@ -136,3 +136,60 @@ header {
     }
 }
 
+
+.accordion {
+    .item {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px;
+            svg {
+                flex-shrink: 0;
+                transition: all .3s ease;
+                margin-left: 15px;
+            }
+        }
+        .content {
+            padding: 15px;
+            display: none;
+            transition: box-shadow .3s ease;
+        }
+        &.active {
+            .header {
+                svg {
+                    flex-shrink: 0;
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    }
+}
+
+
+.tab-container {
+    .tab-nav {
+        display: flex;
+        span {
+            display: block;
+            width: 100%;
+            transition: all .3s ease;
+            cursor: pointer;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 2px solid transparent;
+            &.active {
+                border-color: #000;
+            }
+        }
+    }
+    .tab-content {
+        .item {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
