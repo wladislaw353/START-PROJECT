@@ -111,6 +111,17 @@
 <br>В <code>main.js</code> найдите инизиализацию (см. <code>COUNTS ANIMATION</code>)
 <br>Инициализируйте числа, пример: <code>countup('count1', $('.count1').text())</code>, где <code>.count1</code> - класс тега с числом
 
+# <h2>Accordion component</h2>
+В <code>index.html</code> находится компонент <code>.accordion</code>
+В <code>style.scss</code> найдите стили для <code>.accordion</code>
+<br>В <code>main.js</code> найдите инизиализацию (см. <code>ACCORDION</code>)
+<br>Добавьте класс <code>multiple</code> для <code>.accordion</code> для множественного раскрытия пунктов
+
+# <h2>Tabs component</h2>
+В <code>index.html</code> находится компонент <code>.tab-container</code>
+В <code>style.scss</code> найдите стили для <code>.tab-container</code>
+<br>В <code>main.js</code> найдите инизиализацию (см. <code>TABS</code>)
+
 # <h2>Бургер для мобильного меню</h2>
 Используйте блок с классом .burger в HTML
 <br>В <code>style.scss</code> ищите <code>.burger</code>, чтоб изменить стили:
