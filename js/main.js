@@ -158,6 +158,15 @@ $(document).ready(()=> {const wstyle=["padding: 1rem;","font-size: 20px;","font-
     })
 
 
+    // FB & TWITTER SHARE BUTTON
+    $('#fb-shareq').click(function() {
+        open(`https://www.facebook.com/sharer.php?u=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no");
+    });
+    $('#tw-shareq').click(function() {
+        open(`https://twitter.com/share?text=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no");
+    });
+
+
 	// COUNTS ANIMATION
     if ($('.count1').length > 0) {
         function countup(className) {

@@ -17,6 +17,11 @@ section.seo-text {
       font-family: inherit;
       color: inherit;
     }
+    &.indent {
+      h1 ~ p {
+        text-indent: 1.5em;
+      }
+    }
     ul,
     ol {
       margin-bottom: em(5, 18);

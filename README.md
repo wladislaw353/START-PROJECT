@@ -106,6 +106,10 @@
 Добавьте кнопке идентификатор <code>#totop</code>
 <br>Скрипт находится в <code>main.js</code> (см. <code>GO TO TOP</code>)
 
+# <h4>Обработка кнопок поделиться в twitter и facebook</h4>
+Добавьте кнопкам идентификаторы <code>#tw-shareq</code> и <code>#fb-shareq</code> соотв. А также в <code>data-href</code> полный url страницы
+<br>Скрипт находится в <code>main.js</code> (см. <code>FB & TWITTER SHARE BUTTON</code>)
+
 # <h2>Анимация числового счетчика</h2>
 Раскомментируйте подключение файла <code>spincrement.js</code>
 <br>В <code>main.js</code> найдите инизиализацию (см. <code>COUNTS ANIMATION</code>)
