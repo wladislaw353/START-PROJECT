@@ -71,6 +71,57 @@ input, textarea {
     &:-moz-placeholder {
         color: $placeholder_color;
     }
+    &[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 2px;
+        border-color: #B8B8B8;
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 5px;
+            left: 4px;
+            width: 7px;
+            height: 6px;
+            opacity: 0;
+            transition: all .3s ease;
+            background: url(../img/check.svg) center / contain no-repeat;
+        }
+        &:checked {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+    &[type='radio'] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        position: relative;
+        border-radius: 100%;
+        border-color: #B8B8B8;
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 4px;
+            left: 4px;
+            width: 6px;
+            height: 6px;
+            opacity: 0;
+            border-radius: 100%;
+            transition: all .3s ease;
+            background: #B8B8B8;
+        }
+        &:checked {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
 }
 select {
   appearance: none;
