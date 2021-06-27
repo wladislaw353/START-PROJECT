@@ -71,6 +71,9 @@ input, textarea {
     &:-moz-placeholder {
         color: $placeholder_color;
     }
+    &[readonly] {
+        cursor: not-allowed;
+    }
     &[type='checkbox'] {
         width: 16px;
         height: 16px;
