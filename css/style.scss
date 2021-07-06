@@ -61,6 +61,18 @@ a {
     display: flex;
     align-items: center;
 }
+.align-left {
+    display: flex;
+    justify-content: flex-end;
+}
+.align-center {
+    display: flex;
+    justify-content: flex-end;
+}
+.align-right {
+    display: flex;
+    justify-content: flex-end;
+}
 
 header {
     &.fixed-header {
