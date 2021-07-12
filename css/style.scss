@@ -95,6 +95,7 @@ header {
         background: $bar-color;
         transition: all 0ms 300ms;
         margin: 0 15px;
+        flex-shrink: 0;
         display: none;
         @media(max-width: $breakpoint) {
             display: flex;
@@ -122,7 +123,7 @@ header {
             transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
         }
         &.active {
-            background: transparent;
+            background: transparent !important;
             &:after {
                 top: 0;
                 transform: rotate(45deg);
