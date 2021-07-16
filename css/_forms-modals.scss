@@ -98,6 +98,29 @@ input, textarea {
                 opacity: 1;
             }
         }
+        &.switch {
+            width: 30px;
+            height: 20px;
+            border-radius: 50px;
+            transition: all .3s ease;
+            background: #B8B8B8;
+            border: 0;
+            &:after {
+                top: 2px;
+                left: 2px;
+                border-radius: 100%;
+                background: #fff;
+                opacity: 1;
+                width: 16px;
+                height: 16px;
+            }
+            &:checked {
+                background: #00BE13;
+                &:after {
+                    transform: translateX(10px);
+                }
+            }
+        }
     }
     &[type='radio'] {
         width: 16px;
