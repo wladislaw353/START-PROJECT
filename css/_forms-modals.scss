@@ -126,6 +126,15 @@ input, textarea {
         }
     }
 }
+
+form.check-validation {
+    input, textarea, select {
+        &:invalid:not(:focus) {
+            border-color: #ED1C24;
+        }
+    }
+}
+
 select {
   appearance: none;
   -webkit-appearance: none;
