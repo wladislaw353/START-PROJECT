@@ -1,7 +1,6 @@
 @import '_functions.scss';
 
 .btn {
-    all: unset;
     user-select: none;
     white-space: nowrap;
     cursor: pointer;
@@ -9,12 +8,14 @@
     appearance: none;
     text-align: center;
     display: inline-block;
-    background: #9A762D;
+    box-sizing: border-box;
+    transition: all .3s ease;
+    border: 0;
     text-transform: uppercase;
+    background: #9A762D;
     color: #fff;
     font-weight: 600;
     font-size: em(16);
-    transition: all .3s ease;
     padding: em(19) em(5);
     min-width: 200px;
     &:hover {
