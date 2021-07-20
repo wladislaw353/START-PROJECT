@@ -15,7 +15,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
    
     // SLIDER
 	const slider1 = '.swiper-container'
-	if ($(slider1).length > 0) {
+	if ($(slider1).length) {
 		new Swiper(slider1, {
 			slidesPerView: 2,
 			spaceBetween: 6,
@@ -31,12 +31,8 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
 			}
 		})
         const swiper1 = document.querySelector(slider1).swiper
-        $('.slider-nav > svg:first-child').click(()=> {
-            swiper1.slidePrev()
-        })
-        $('.slider-nav > svg:last-child').click(()=> {
-            swiper1.slideNext()
-        })
+        $('.slider-nav > *:first-child').click(()=> swiper1.slidePrev())
+        $('.slider-nav > *:last-child').click(()=> swiper1.slideNext())
 	}
     
     // ACCORDION
