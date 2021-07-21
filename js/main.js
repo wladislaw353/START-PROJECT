@@ -109,12 +109,26 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
 
     
     // PHONE MASK
-    const phoneMask = '+38(999)999-99-99'
-    Inputmask({
-        'mask': phoneMask,
-        showMaskOnHover: false,
-        showMaskOnFocus: true
-    }).mask(document.querySelectorAll('.phone-mask'))
+    let phoneMask = ''
+    $.get("https://ipinfo.io", response => {
+        // CHECK LOCATION
+        switch(response.country) {
+            case 'UA':
+                phoneMask = '+38(999)999-99-99'
+                break
+            case 'RU':
+                phoneMask = '+7(999)999-99-99'
+                break
+            default:
+                phoneMask = ''
+                break
+        }
+        Inputmask({
+            'mask': phoneMask,
+            showMaskOnHover: false,
+            showMaskOnFocus: true
+        }).mask(document.querySelectorAll('.phone-mask'))
+    }, 'jsonp')
     
 
     // BURGER
