@@ -169,13 +169,16 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     })
 
 
-    // FB & TWITTER SHARE BUTTON
+    // FB & TWITTER & PINTEREST SHARE BUTTON
     $('#fb-shareq').click(function() {
-        open(`https://www.facebook.com/sharer.php?u=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no");
-    });
+        open(`https://www.facebook.com/sharer.php?u=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
+    })
     $('#tw-shareq').click(function() {
-        open(`https://twitter.com/share?text=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no");
-    });
+        open(`https://twitter.com/share?text=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
+    })
+    $('#pt-shareq').click(function() {
+        open(`http://pinterest.com/pin/create/button/?url=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
+    })
 
 
 	// COUNTS ANIMATION
