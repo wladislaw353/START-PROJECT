@@ -1,4 +1,5 @@
 $base-font-size: 18;
+@use "sass:math";
 @function em($pixels, $context: $base-font-size) {
-    @return #{$pixels/$context}em;
+    @return #{math.div($pixels, $context)}em;
 }
