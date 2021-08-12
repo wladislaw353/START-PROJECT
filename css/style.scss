@@ -158,23 +158,40 @@ header {
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            padding: 15px;
+            padding: em(15, 24) 0;
+            font-weight: 500;
+            font-size: em(24);
+            line-height: 160%;
+            @media (max-width: 582px) {
+                font-size: em(20);
+                padding: em(15, 20) 0;
+            }
             svg {
                 flex-shrink: 0;
                 transition: all .3s ease;
-                margin-left: 15px;
+                margin-left: em(15);
+                @media (max-width: 582px) {
+                    width: 19px;
+                }
             }
         }
         .content {
-            padding: 15px;
+            padding: em(15, 16);
             display: none;
             transition: box-shadow .3s ease;
+            font-weight: 500;
+            font-size: em(16);
+            line-height: 160%;
         }
         &.active {
             .header {
                 svg {
                     flex-shrink: 0;
                     transform: rotate(-180deg);
+                    path {
+                        transform: translateX(4px) translateY(11px);
+                        d: path('M0.794219 0.539999H16.2142V3.24H0.794219V0.539999Z');
+                    }
                 }
             }
         }

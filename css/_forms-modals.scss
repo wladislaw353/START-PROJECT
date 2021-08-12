@@ -38,6 +38,7 @@ textarea {
     min-height: 82px;
 }
 input, textarea {
+    width: 100%;
     transition: border .3s ease;
     -moz-appearance: none;
     -webkit-appearance: none;
