@@ -11,6 +11,7 @@
     text-decoration: none;
     box-sizing: border-box;
     border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
 }
 html {
     -webkit-tap-highlight-color: transparent;
@@ -72,6 +73,9 @@ a {
 .align-right {
     display: flex;
     justify-content: flex-end;
+}
+.hidden {
+    display: none;
 }
 
 header {
