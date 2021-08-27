@@ -110,25 +110,27 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     
     // PHONE MASK
     let phoneMask = ''
-    $.get("https://ipinfo.io", response => {
-        // CHECK LOCATION
-        switch(response.country) {
-            case 'UA':
-                phoneMask = '+38(999)999-99-99'
-                break
-            case 'RU':
-                phoneMask = '+7(999)999-99-99'
-                break
-            default:
-                phoneMask = ''
-                break
-        }
-        Inputmask({
-            'mask': phoneMask,
-            showMaskOnHover: false,
-            showMaskOnFocus: true
-        }).mask(document.querySelectorAll('.phone-mask'))
-    }, 'jsonp')
+    if (location.hostname != '127.0.0.1') {
+        $.get("https://ipinfo.io", response => {
+            // CHECK LOCATION
+            switch(response.country) {
+                case 'UA':
+                    phoneMask = '+38(999)999-99-99'
+                    break
+                case 'RU':
+                    phoneMask = '+7(999)999-99-99'
+                    break
+                default:
+                    phoneMask = ''
+                    break
+            }
+            Inputmask({
+                'mask': phoneMask,
+                showMaskOnHover: false,
+                showMaskOnFocus: true
+            }).mask(document.querySelectorAll('.phone-mask'))
+        }, 'jsonp')
+    }
     
 
     // BURGER
@@ -164,8 +166,8 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     // SCROLL TO SECTION
     $('a.anchor').click(function(event) {
         event.preventDefault()
-        const link = $(this).attr('href')
-        document.querySelector(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const link = $(this).attr('name') ? $(this).attr('name') : $(this).attr('href').replace('#')
+        document.getElementById(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
     })
 
 
