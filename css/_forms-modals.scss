@@ -41,8 +41,6 @@ textarea {
 input, textarea {
     width: 100%;
     transition: border .3s ease;
-    -moz-appearance: none;
-    -webkit-appearance: none;
     appearance: none;
     border: 0;
     border-bottom: 1px solid #E0E0E0;
@@ -50,18 +48,24 @@ input, textarea {
     background: transparent;
     color: #000;
     font-size: em(18);
+    $placeholder_color: #BDBDBD;
     &:focus {
         border-color: #9A762D;
     }
+    &[type='date'] {
+        // background: url(../img/calendar.svg) right 19px top 55% / 14px no-repeat;
+        // &::-webkit-calendar-picker-indicator {
+        //     opacity: 0;
+        // }
+    }
     &[type='number'] {
         -moz-appearance: textfield;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            display: none; 
+            margin: 0; 
+        }
     }
-    &[type='number']::-webkit-outer-spin-button,
-    &[type='number']::-webkit-inner-spin-button {
-        display: none; 
-        margin: 0; 
-    }
-    $placeholder_color: #BDBDBD;
     &::-webkit-input-placeholder {
         color: $placeholder_color;
     }
@@ -154,22 +158,13 @@ input, textarea {
 }
 
 select {
-    appearance: none;
-    -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, gray 50%),
-    linear-gradient(135deg, gray 50%, transparent 50%),
-    linear-gradient(to right, #ccc, #ccc) !important;
-  background-position:
-  calc(100% - 20px) calc(1em + 2px),
-  calc(100% - 15px) calc(1em + 2px),
-  calc(100% - 2.5em) 0.5em !important;
-  background-size:
-  5px 5px,
-  5px 5px,
-  1px 1.5em !important;
-  background-repeat: no-repeat !important;
+    // appearance: none;
+    // background: #fff url(../img/arrow.svg) right 7px top 55%/14px no-repeat;
+    padding: em(12, 16) em(30, 16) em(10, 16) em(10, 16);
+    color: #000;
+    font-size: em(16);
+    border: 1px solid #E0E0E0;
+    cursor: pointer;
 }
 
 form.check-validation {
