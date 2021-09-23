@@ -14,7 +14,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     }
    
     // SLIDER
-	const slider1 = '.swiper-container'
+	const slider1 = '.swiper'
 	if ($(slider1).length) {
 		new Swiper(slider1, {
 			slidesPerView: 2,
@@ -131,6 +131,12 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
             }).mask(document.querySelectorAll('.phone-mask'))
         }, 'jsonp')
     }
+
+    // INPUT FILE
+    $('.file-btn button').click(function(e) {
+        e.preventDefault()
+        $(this).parent().find('input').trigger('click')
+    })
     
 
     // BURGER
