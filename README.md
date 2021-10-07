@@ -15,6 +15,7 @@
 <br>
 <br>Класс <code>.holder</code> используется в качестве контейнера. Изменить ширину можно в <code>style.scss</code>, по умолчанию 1200px и по 15px горизонтальных падингов.
 <br>Классы <code>.align-left</code> <code>.align-canter</code> <code>.align-right</code> <code>.hidden</code> используется для горизонтального выравнивания элемента, например кнопки и скрытия элементов. Изменить свойства можно в <code>style.scss</code>. Для использования оберните элемент классом.
+<br>Классы для построения grid-сеток <code>.span-col-2</code> <code>.span-col-3</code> <code>.span-col-4</code>
 
 # <h2>CSS</h2>
 Все файлы стилей находятся в папке css. Используется препроцессор Sass с синтаксисом scss.
