@@ -88,16 +88,21 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
 
     // MODAL
     $('[data-modalq-opener]').click(function() {
-        $('.modalq-wrapper').fadeIn().css('display', 'flex')
-        $('#modalq-' + $(this).data('modalq-opener')).fadeIn().css('display', 'flex')
-        $('input[name="target"]').val( ($(this).attr('data-modalq-target')) ? $(this).data('modalq-target') : $(this).data('target') )
-        window.location.hash = '#modal'
+        const modal_id = $(this).data('modalq-opener')
+        const modal_target = ($(this).attr('data-modalq-target')) ? $(this).data('modalq-target') : $(this).data('target')
+        modalqOpen(modal_id, modal_target)
     })
+    function modalqOpen(modal_id, modal_target) {
+        $('.modalq-wrapper').fadeIn().css('display', 'flex')
+        $('#modalq-' + modal_id).fadeIn().css('display', 'flex')
+        $('input[name="target"]').val(modal_target)
+        window.location.hash = '#modal-' + modal_id
+    }
     function modalqClose() {
         $('.modalq').fadeOut()
         $('.modalq-wrapper').fadeOut()
         $('input[name="target"]').val('')
-        if (location.hash) history.replaceState(null, null, ' ')
+        if (location.hash.includes('#modal-')) history.replaceState(null, null, ' ')
     }
     window.addEventListener('hashchange', () => {
         if (!location.hash) modalqClose()
@@ -106,6 +111,12 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     $(document).mouseup(e => {
         if ($('.modalq-wrapper').has(e.target).length === 0) modalqClose()
     })
+    if (location.hash.includes('#modal-')) {
+        const modal_id = location.hash.replace('#modal-', '')
+        const modal_target = 'Auto Opened'
+        console.log(modal_id)
+        modalqOpen(modal_id, modal_target)
+    }
 
     
     // PHONE MASK
@@ -172,8 +183,11 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     // SCROLL TO SECTION
     $('a.anchor').click(function(event) {
         event.preventDefault()
-        const link = $(this).attr('name') ? $(this).attr('name') : $(this).attr('href').replace('#')
+        const link = $(this).attr('name') ? $(this).attr('name') : $(this).attr('href').replace('#', '')
         document.getElementById(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
+        setTimeout(() => {
+            window.location.hash = '#' + link
+        }, 800)
     })
 
 
