@@ -194,10 +194,12 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     $('a.anchor').click(function(event) {
         event.preventDefault()
         const link = $(this).attr('name') ? $(this).attr('name') : $(this).attr('href').replace('#', '')
-        document.getElementById(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
-        setTimeout(() => {
-            window.location.hash = '#' + link
-        }, 800)
+        if (document.getElementById(link)) {
+            document.getElementById(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
+            setTimeout(() => {
+                window.location.hash = '#' + link
+            }, 800)
+        }
     })
 
 
