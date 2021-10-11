@@ -21,6 +21,17 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
 			spaceBetween: 6,
 			freeMode: false,
 			direction: 'horizontal',
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            autoplay: {
+                delay: 5000,
+            },
 			breakpoints: {
                 650: {
                     slidesPerView: 3
@@ -114,7 +125,6 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     if (location.hash.includes('#modal-')) {
         const modal_id = location.hash.replace('#modal-', '')
         const modal_target = 'Auto Opened'
-        console.log(modal_id)
         modalqOpen(modal_id, modal_target)
     }
 
