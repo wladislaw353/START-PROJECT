@@ -204,10 +204,12 @@ form.check-validation {
         }
         [data-modalq-close] {
             position: absolute;
-            right: 0;
-            top: 0;
+            right: 10px;
+            top: 10px;
             cursor: pointer;
             user-select: none;
+            padding: 0;
+            width: auto;
         }
         form {
             display: flex;
