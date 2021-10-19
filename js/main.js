@@ -106,13 +106,13 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     function modalqOpen(modal_id, modal_target) {
         $('.modalq-wrapper').fadeIn().css('display', 'flex')
         $('#modalq-' + modal_id).fadeIn().css('display', 'flex')
-        $('input[name="target"]').val(modal_target)
+        $('.modalq input[name="target"]').val(modal_target)
         window.location.hash = '#modal-' + modal_id
     }
     function modalqClose() {
         $('.modalq').fadeOut()
         $('.modalq-wrapper').fadeOut()
-        $('input[name="target"]').val('')
+        $('.modalq input[name="target"]').val('')
         if (location.hash.includes('#modal-')) history.replaceState(null, null, ' ')
     }
     window.addEventListener('hashchange', () => {
