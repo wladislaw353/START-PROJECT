@@ -199,6 +199,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
             setTimeout(() => {
                 window.location.hash = '#' + link
             }, 800)
+            if ( $('.burger').hasClass('active') ) $('.burger').trigger('click')
         }
     })
 
