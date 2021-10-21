@@ -191,17 +191,46 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
 
 
     // SCROLL TO SECTION
+    let scrollingToAnchor = false
     $('a.anchor').click(function(event) {
-        event.preventDefault()
-        const link = $(this).attr('name') ? $(this).attr('name') : $(this).attr('href').replace('#', '')
-        if (document.getElementById(link)) {
-            document.getElementById(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
-            setTimeout(() => {
-                window.location.hash = '#' + link
-            }, 800)
-            if ( $('.burger').hasClass('active') ) $('.burger').trigger('click')
+        if (!scrollingToAnchor) {
+            event.preventDefault()
+            const link = $(this).attr('name') ? $(this).attr('name') : $(this).attr('href').replace('#', '')
+            if (document.getElementById(link)) {
+                scrollingToAnchor = true
+                $('nav a').removeClass('active')
+                $(this).addClass('active')
+                document.getElementById(link).scrollIntoView({ behavior: 'smooth', block: 'start' })
+                setTimeout(() => {
+                    window.location.hash = '#' + link
+                    scrollingToAnchor = false
+                }, 800)
+                if ( $('.burger').hasClass('active') ) $('.burger').trigger('click')
+            }
         }
     })
+
+    // ACTIVE LINK
+    $(window).scroll(function() {
+        if (!scrollingToAnchor) {
+            $('nav li').each(function() {
+                if ($(this).find('a').hasClass('anchor')) {
+                    const element = $(this).find('a').attr('name') ? $(this).find('a').attr('name') : $(this).find('a').attr('href').replace('#', '')
+                    if (activeLink(element) == 'stop') return false
+                }
+            })
+        }
+    })
+    function activeLink(element) {
+        const offset = $('#'+element).offset().top - $(document).scrollTop()
+        if (offset < 200 && offset > $('#'+element).height() * -1 + 200) {
+            $('nav a').removeClass('active')
+            $(`nav a[name=${element}]`) ? $(`nav a[name=${element}]`).addClass('active') : $(`nav a[href=#${element}]`).addClass('active')
+            return 'stop'
+        } else {
+            $(`nav a`).removeClass('active')
+        }
+    }
 
 
     // FB & TWITTER & PINTEREST SHARE BUTTON

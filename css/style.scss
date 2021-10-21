@@ -73,6 +73,7 @@ header {
             li {
                 list-style: none;
                 a {
+                    &.active,
                     &:hover {
                         
                     }
