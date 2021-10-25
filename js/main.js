@@ -79,7 +79,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
                 $('.modalq-wrapper').fadeIn().css('display', 'flex')
                 $('.modalq').hide()
                 $('#modalq-0').fadeIn()
-				if ($('head').html().includes('(f,b,e,v,n,t,s)')) fbq('track', 'Lead')
+				if ($('head').html().includes('f.fbq')) fbq('track', 'Lead')
             },
             error: (xhr, str)=> {
                 console.log(`${JSON.stringify(xhr, null, '\t')}; ${str}`)
