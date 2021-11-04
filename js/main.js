@@ -120,7 +120,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
     })
     $('[data-modalq-close]').click(modalqClose)
     $(document).mouseup(e => {
-        if ($('.modalq-wrapper').has(e.target).length === 0) modalqClose()
+        if ($('.modalq-wrapper').is(':visible') && $('.modalq-wrapper').has(e.target).length === 0) modalqClose()
     })
     if (location.hash.includes('#modal-')) {
         const modal_id = location.hash.replace('#modal-', '')
