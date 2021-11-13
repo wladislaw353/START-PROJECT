@@ -75,7 +75,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 17
             url: '/send.php',
             data: {msg: JSON.stringify(msg), utm: JSON.stringify(utm)},
             success: (data)=> {
-                console.log(data);
+                if (typeof data === 'string') data = JSON.parse(data)
                 $('.modalq-wrapper').fadeIn().css('display', 'flex')
                 $('.modalq').hide()
                 $('#modalq-0').fadeIn()
