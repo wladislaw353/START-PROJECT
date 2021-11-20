@@ -82,7 +82,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 				if ($('head').html().includes('f.fbq')) fbq('track', 'Lead')
             },
             error: (xhr, str)=> {
-                console.log(`${JSON.stringify(xhr, null, '\t')}; ${str}`)
+                console.error(`${JSON.stringify(xhr, null, '\t')}; ${str}`)
             }
         })
     }
