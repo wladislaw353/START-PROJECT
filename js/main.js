@@ -17,8 +17,8 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 	const slider1 = '.swiper'
 	if ($(slider1).length) {
 		new Swiper(slider1, {
-			slidesPerView: 2,
-			spaceBetween: 6,
+			slidesPerView: 1,
+			spaceBetween: 5,
 			freeMode: false,
 			direction: 'horizontal',
             navigation: {
@@ -33,11 +33,14 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
                 delay: 5000,
             },
 			breakpoints: {
-                650: {
+                550: {
+                    slidesPerView: 2
+				},
+				650: {
                     slidesPerView: 3
 				},
-				860: {
-                    slidesPerView: 2
+				800: {
+                    slidesPerView: 4
 				},
 			}
 		})
@@ -243,6 +246,14 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
     })
     $('#pt-shareq').click(function() {
         open(`http://pinterest.com/pin/create/button/?url=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
+    })
+
+
+    // FANCYBOX
+    Fancybox.bind("[data-fancybox]", {
+        Thumbs: {
+          autoStart: false,
+        },
     })
 
 

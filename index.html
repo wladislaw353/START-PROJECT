@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" as="style" onload="this.rel='stylesheet'"> -->
 	<meta name="description" content="">
     <title></title>
     <meta name="robots" content="noindex, nofollow">
@@ -17,8 +18,6 @@
 <body>
 
     <div class="preloader"></div>
-
-    <div data-modalq-opener="1" data-modalq-target="Заказать услугу">Open Modal 1</div>
 
     <header>
         <div class="holder">
@@ -42,7 +41,10 @@
             </div>
         </section>
 
+        <!-- Modal opener -->
+        <button data-modalq-opener="1" data-modalq-target="Заказать услугу">Open Modal 1</button>
 
+        <!-- Tabs -->
         <div class="tab-container">
             <div class="tab-nav">
                 <span class="active"></span>
@@ -54,7 +56,7 @@
             </div>
         </div>
 
-        
+        <!-- Accordion -->
         <div class="accordion">
             <div class="item">
                 <div class="header">
@@ -70,6 +72,21 @@
             </div>
         </div>
 
+        <!-- Swiper -->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-hash="banner-1"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <!-- FancyBox -->
+        <div class="image-wrapper" data-caption="" data-fancybox="gallery" href="">
+            <img src="" alt="">
+        </div>
+
     </main>
     
     <footer>
@@ -78,7 +95,7 @@
         </div>
     </footer>
 
-    <!-- модалки -->
+    <!-- Modals -->
     <div class="modalq-wrapper">
         <div class="modalq" id="modalq-0">
             <div>Спасибо</div>
@@ -97,6 +114,7 @@
     
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script> -->
 	<!-- <script src="js/spincrement.js"></script> -->
     <script src="js/main.js"></script>
 </body>
