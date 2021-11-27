@@ -6,6 +6,7 @@
 <br> - theme-color для указания цвета шапки браузера в Chrome
 <br> - подключен шрифт Montserrat
 <br> - подключен Swiper c unpkg CDN
+<br> - подключен FancyBox c jsdelivr CDN
 <br> - подключена jQuery c Google CDN
 <br> - февикон <code>img/favicon.png</code>
 <br> - прелоадер - <code>.preloader</code>
