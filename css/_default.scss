@@ -41,6 +41,9 @@ body::-webkit-scrollbar {
 a {
     color: inherit;
     display: inline-block;
+    &.anchor {
+        cursor: pointer;
+    }
 }
 
 .holder {
