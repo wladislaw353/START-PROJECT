@@ -8,7 +8,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
         setTimeout(() => {
             $('.preloader').fadeOut()
             new WOW().init()
-        }, 1000)
+        }, 100)
     } else {
         new WOW().init()
     }

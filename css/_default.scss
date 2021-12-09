@@ -25,7 +25,7 @@ html {
     height: 5px;
 }
 body::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 }
 
 .preloader {
@@ -49,19 +49,25 @@ a {
 .holder {
     max-width: em(1230);
     margin: 0 auto;
-    padding: 0 em(15);
+    padding: 0 15px;
     width: 100%;
 }
+
 .grid-container {
     display: grid;
 }
 .span-col-2 {grid-column: span 2 / auto}
 .span-col-3 {grid-column: span 3 / auto}
 .span-col-4 {grid-column: span 4 / auto}
+.span-row-2 {grid-row: span 2 / auto}
+.span-row-3 {grid-row: span 3 / auto}
+.span-row-4 {grid-row: span 4 / auto}
+
 .flex-container {
     display: flex;
     align-items: center;
 }
+
 .align-left {
     display: flex;
     justify-content: flex-start;

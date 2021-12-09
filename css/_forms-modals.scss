@@ -38,7 +38,7 @@ textarea {
     resize: vertical;
     min-height: em(85);
 }
-input, textarea {
+input, textarea, select {
     width: 100%;
     transition: border .3s ease;
     appearance: none;
@@ -53,6 +53,7 @@ input, textarea {
         border-color: #9A762D;
     }
     &[type='date'] {
+        appearance: unset;
         // background: url(../img/calendar.svg) right 19px top 55% / 14px no-repeat;
         // &::-webkit-calendar-picker-indicator {
         //     opacity: 0;
@@ -158,20 +159,22 @@ input, textarea {
 }
 
 select {
-    // appearance: none;
+    appearance: unset;
     // background: #fff url(../img/arrow.svg) right 7px top 55%/14px no-repeat;
-    padding: em(12, 16) em(30, 16) em(10, 16) em(10, 16);
-    color: #000;
-    font-size: em(16);
-    border: 1px solid #E0E0E0;
     cursor: pointer;
 }
 
 form.check-validation {
     input, textarea, select {
-        &:invalid:not(:focus) {
+        &:invalid {
             border-color: #ED1C24;
         }
+    }
+}
+
+form {
+    input, textarea, select {
+        margin-bottom: 10px;
     }
 }
 
@@ -195,18 +198,17 @@ form.check-validation {
         padding: 30px;
         width: 100%;
         max-height: calc(var(--vh, 100vh) - 30px);
-        max-width: em(800);
+        max-width: em(550);
         flex-direction: column;
         overflow-x: hidden;
         overflow-y: auto;
         @media(max-width: 1023px) {
             height: auto;
         }
-        [data-modalq-close] {
+        svg[data-modalq-close] {
             position: absolute;
             right: 10px;
             top: 10px;
-            cursor: pointer;
             user-select: none;
             padding: 0;
             width: auto;
@@ -233,9 +235,6 @@ form.check-validation {
             padding-bottom: 30px;
             display: block;
         }
-        .btn {
-            margin-top: 12px;
-        }
         &#modalq-0 {
             & > div {
                 height: 100%;
@@ -253,6 +252,7 @@ form.check-validation {
     }
 }
 
-[data-modalq-opener] {
+[data-modalq-opener],
+[data-modalq-close] {
     cursor: pointer;
 }
