@@ -250,7 +250,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 
 
     // FANCYBOX
-    if ($('[data-fancybox]')) {
+    if ($('[data-fancybox]').length > 0) {
         Fancybox.bind("[data-fancybox]", {
             Thumbs: {
               autoStart: false,
