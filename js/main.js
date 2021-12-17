@@ -250,11 +250,13 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 
 
     // FANCYBOX
-    Fancybox.bind("[data-fancybox]", {
-        Thumbs: {
-          autoStart: false,
-        },
-    })
+    if ($('[data-fancybox]')) {
+        Fancybox.bind("[data-fancybox]", {
+            Thumbs: {
+              autoStart: false,
+            },
+        })
+    }
 
 
 	// COUNTS ANIMATION
