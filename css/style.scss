@@ -13,7 +13,6 @@ header {
     .logo {
         display: flex;
         img {
-            display: block;
             width: 100%;
         }
     }
@@ -69,13 +68,30 @@ header {
         }
     }
     nav {
-        ul {
-            li {
+        & > ul {
+            & > li {
                 list-style: none;
+                position: relative;
                 a {
                     &.active,
                     &:hover {
                         
+                    }
+                }
+                ul {
+                    position: absolute;
+                    left: 0;
+                    top: em(20);
+                    opacity: 0;
+                    visibility: hidden;
+                    li {
+
+                    }
+                }
+                &:hover {
+                    ul {
+                        opacity: 1;
+                        visibility: visible;
                     }
                 }
             }
@@ -95,7 +111,7 @@ header {
             font-weight: 500;
             font-size: em(24);
             line-height: 160%;
-            @media (max-width: 582px) {
+            @include _550 {
                 font-size: em(20);
                 padding: em(15, 20) 0;
             }
@@ -103,7 +119,7 @@ header {
                 flex-shrink: 0;
                 transition: all .3s ease;
                 margin-left: em(15);
-                @media (max-width: 582px) {
+                @include _550 {
                     width: 19px;
                 }
             }

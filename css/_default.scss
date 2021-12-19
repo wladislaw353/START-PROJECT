@@ -25,13 +25,13 @@ html {
     height: 5px;
 }
 body::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
 .preloader {
     position: fixed;
     left: 0;
-    z-index: 0;
+    top: 0;
     z-index: 9999;
     width: 100vw;
     height: 100vh;
@@ -41,9 +41,15 @@ body::-webkit-scrollbar {
 a {
     color: inherit;
     display: inline-block;
+    transition: all .3s ease;
     &.anchor {
         cursor: pointer;
     }
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 .holder {
@@ -86,4 +92,23 @@ a {
 
 section {
     scroll-margin-top: 100px;
+}
+
+#totop {
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+    position: fixed;
+    right: 42px;
+    bottom: 30px;
+    background: #fff;
+    border-radius: 100%;
+    border: 1px solid #003C7D;
+    display: flex;
+    padding: 7px 7px 7px;
+    z-index: 99;
+    @include _767 {
+        right: 25px;
+    }
 }

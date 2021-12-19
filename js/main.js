@@ -13,6 +13,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
         new WOW().init()
     }
    
+
     // SLIDER
 	const slider1 = '.swiper'
 	if ($(slider1).length) {
@@ -20,6 +21,8 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 			slidesPerView: 1,
 			spaceBetween: 5,
 			freeMode: false,
+            speed: 900,
+            draggable: true,
 			direction: 'horizontal',
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -49,6 +52,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
         $('.slider-nav > *:last-child').click(()=> swiper1.slideNext())
 	}
     
+
     // ACCORDION
     $('.accordion .item .header').click(function() {
         if ($(this).parent().hasClass('active')) {
@@ -155,7 +159,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
                 showMaskOnFocus: true
             }).mask(document.querySelectorAll('.phone-mask'))
         }, 'jsonp')
-    }
+    } else console.info('Phone Mask is disabled for 127.0.0.1')
 
     // INPUT FILE
     $('.file-btn button').click(function(e) {
@@ -186,9 +190,9 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 
     // FIXED HEADER
     $(window).scroll(function() { 
-        if($(document).width() > 965) {
+        if($(document).width() > 1000) {
             const top = $(document).scrollTop()
-            if (top > 200) $('header').addClass('fixed-header')
+            if (top > 100) $('header').addClass('fixed-header')
             else $('header').removeClass('fixed-header')
         }
     })
@@ -214,6 +218,7 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
         }
     })
 
+    
     // ACTIVE LINK
     $(window).scroll(function() {
         if (!scrollingToAnchor) {
@@ -237,7 +242,16 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
     }
 
 
-    // FB & TWITTER & PINTEREST SHARE BUTTON
+    // READ MORE
+    $('.readmore button').click(function() {
+        $(this).parent().parent().find('.readmore-content').toggleClass('active')
+        const text = $(this).data('text')
+        $(this).data('text', $(this).find('span').text())
+        $(this).find('span').text(text)
+    })
+
+
+    // FB & TWITTER & PINTEREST SHARE BUTTONS
     $('#fb-shareq').click(function() {
         open(`https://www.facebook.com/sharer.php?u=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
     })
@@ -260,29 +274,19 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
 
 
 	// COUNTS ANIMATION
-    if ($('.count1').length > 0) {
-        function countup(className) {
-            const countBlockTop = $("."+className).offset().top
-            const windowHeight = window.innerHeight
-            let show = true
-                        
-            $(window).scroll(()=> {
-                if(show && (countBlockTop < $(window).scrollTop() + windowHeight)) { 
-                    show = false
-                    $('.'+className).spincrement({
+    if ($('.count').length > 0) {
+        const counts = new WOW({
+            callback: (box)=> {
+                if ($(box).hasClass('count')) {
+                    $(box).spincrement({
                         from: 1,
-                        duration: 4000,
-                        thousandSeparator: '',
+                        duration: 2000,
+                        thousandSeparator: ' ',
                     })
                 }
-            })	
-        }
-        $(()=> {
-            countup('count1', $('.count1').text())
-            countup('count2', $('.count2').text())
-            countup('count3', $('.count2').text())
-            countup('count4', $('.count2').text())
+            }
         })
+        counts.init()
     }
     
 })

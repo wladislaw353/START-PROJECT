@@ -4,8 +4,29 @@
 section.seo-text {
     font-size: em(18);
     color: #000;
-    letter-spacing: em(1);
+    // letter-spacing: em(1);
     font-family: inherit;
+    .readmore-content {
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      overflow: hidden;
+      & + .readmore {
+        margin: em(15) 0;
+        button {
+          
+        }
+      }
+      &.active {
+        position: relative;
+        -webkit-line-clamp: unset;
+        display: block;
+        overflow: unset;
+        button {
+  
+        }
+      }
+    }
     video,
     iframe {
       margin: 0 auto;
