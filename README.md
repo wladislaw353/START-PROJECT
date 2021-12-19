@@ -29,9 +29,19 @@
 <br> - <code>functions</code> - функции, в т.ч. конвертер px в em
 <br> - <code>media-queries</code> - миксины для media-запросов
 <br> - <code>default</code> - reset и базовые стили
+<br> - <code>default</code> - reset и базовые стили
 <br>
 <br>Стили для статьи прописаны, предусматривают практически все возможные теги и компиляции визуальных редакторов.
 <br>Чтоб использовать, укажите section класс <code>.seo-text</code>. Для применения отступов абзаца добавьте к section класс <code>.indent</code>
+<br>Добавлен механизм "Читать далее" для <code>.seo-text</code>:
+<br>Свернутый текст необходимо обернуть блоком `.readmore-content`. Под ним разместить кнопку:
+<code><div class="readmore">
+    <button data-text="Свернуть">
+        <span>Читать далее</span>
+    </button>
+</div></code>
+<br>В <code>data-text</code> находится текст кнопки для обратного сворачивания текста. Текст кнопки обязательно должен быть обернут в <code><span></code>, это сделано для возможности размещения рядом с текстом стрелочки.
+<br>При разворачивании текста, блоку <code>.readmore-content</code> добавляется класс <code>.active</code>
 <br>
 <br>Для указания высоты экрана, крайне не рекомендуется использовать <code>100vh</code>, т.к. оно не учитывает высоту навигации и строки поиска браузера.
 <br>Используйте <code>var(--vh, 100vh)</code> вместо <code>100vh</code>.
@@ -118,6 +128,7 @@
 
 # <h4>Кнопка "наверх"</h4>
 Добавьте кнопке идентификатор <code>#totop</code>
+Кнопка добавлена в html, стили находятся в <code>_default.scss</code>
 <br>Скрипт находится в <code>main.js</code> (см. <code>GO TO TOP</code>)
 
 # <h4>Обработка кнопок поделиться в twitter, facebook и pinterest</h4>
@@ -126,8 +137,8 @@
 
 # <h2>Анимация числового счетчика</h2>
 Раскомментируйте подключение файла <code>spincrement.js</code>
-<br>В <code>main.js</code> найдите инизиализацию (см. <code>COUNTS ANIMATION</code>)
-<br>Инициализируйте числа, пример: <code>countup('count1', $('.count1').text())</code>, где <code>.count1</code> - класс тега с числом
+<br>Элементу с числом необходимо добавить 2 класса в html: <code>wow</code> <code>count</code>
+<br>Инициализация происходит автоматически для всех элементов, привязана к wow.js и находится в <code>main.js</code> (см. <code>COUNTS ANIMATION</code>)
 
 # <h2>Accordion component</h2>
 В <code>index.html</code> находится компонент <code>.accordion</code>
