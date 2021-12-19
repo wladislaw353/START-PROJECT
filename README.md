@@ -35,11 +35,12 @@
 <br>Чтоб использовать, укажите section класс <code>.seo-text</code>. Для применения отступов абзаца добавьте к section класс <code>.indent</code>
 <br>Добавлен механизм "Читать далее" для <code>.seo-text</code>:
 <br>Свернутый текст необходимо обернуть блоком `.readmore-content`. Под ним разместить кнопку:
-<code><div class="readmore">
-    <button data-text="Свернуть">
-        <span>Читать далее</span>
-    </button>
-</div></code>
+<pre><code>&lt;div class="readmore"&gt;
+    &lt;button data-text="Свернуть"&gt;
+        &lt;span&gt;Читать далее&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
 <br>В <code>data-text</code> находится текст кнопки для обратного сворачивания текста. Текст кнопки обязательно должен быть обернут в <code><span></code>, это сделано для возможности размещения рядом с текстом стрелочки.
 <br>При разворачивании текста, блоку <code>.readmore-content</code> добавляется класс <code>.active</code>
 <br>
