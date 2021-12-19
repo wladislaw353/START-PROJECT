@@ -22,7 +22,7 @@ section.seo-text {
         -webkit-line-clamp: unset;
         display: block;
         overflow: unset;
-        button {
+        & + .readmore button {
   
         }
       }

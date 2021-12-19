@@ -47,6 +47,10 @@ a {
     }
 }
 
+path {
+    transition: all .3s ease;
+}
+
 img {
     display: block;
     max-width: 100%;
