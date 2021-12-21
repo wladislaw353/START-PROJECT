@@ -108,9 +108,11 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
     $('[data-modalq-opener]').click(function() {
         const modal_id = $(this).data('modalq-opener')
         const modal_target = ($(this).attr('data-modalq-target')) ? $(this).data('modalq-target') : $(this).data('target')
-        modalqOpen(modal_id, modal_target)
+        const modal_info = ($(this).attr('data-modalq-info')) ? $(this).data('modalq-info') : $(this).data('info')
+        modalqOpen(modal_id, modal_target, modal_info)
     })
-    function modalqOpen(modal_id, modal_target) {
+    function modalqOpen(modal_id, modal_target = false, modal_info = false) {
+        if (modal_info) $(`#modalq-${modal_id} .modalq-info`).html(modal_info)
         $('.modalq-wrapper').fadeIn().css('display', 'flex')
         $('#modalq-' + modal_id).fadeIn().css('display', 'flex')
         const target_input = $('.modalq input[name="target"]')
@@ -120,7 +122,10 @@ $(document).ready(()=> {const wwt=1;const wstyle=["padding: 5px;","font-size: 13
     function modalqClose() {
         $('.modalq').fadeOut()
         $('.modalq-wrapper').fadeOut()
-        $('.modalq input[name="target"]').val('')
+        setTimeout(() => {
+            $('.modalq input[name="target"]').val('')
+            $('.modalq .modalq-info').html('')
+        }, 300)
         if (location.hash.includes('#modal-')) history.replaceState(null, null, ' ')
     }
     window.addEventListener('hashchange', () => {
