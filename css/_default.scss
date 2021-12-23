@@ -5,14 +5,46 @@
     margin: 0;
     padding: 0;
     outline: none;
-    text-decoration: none;
     box-sizing: border-box;
-    border-collapse: collapse;
     font-family: 'Montserrat', sans-serif;
+}
+table {
+    border-collapse: collapse;
+}
+pre, code, kbd, samp {
+    font-family: monospace, monospace;
+}
+iframe, video {
+    display: block;
 }
 html {
     -webkit-tap-highlight-color: transparent;
     -webkit-hyphenate-character: '-';
+    tab-size: 4;
+}
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+path {
+    transition: all .3s ease;
+}
+a {
+    color: inherit;
+    display: inline-block;
+    text-decoration: none;
+    transition: all .3s ease;
+    &.anchor {
+        cursor: pointer;
+    }
+}
+section {
+    scroll-margin-top: 100px;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,24 +69,6 @@ body::-webkit-scrollbar {
     width: 100vw;
     height: 100vh;
     background: #fff;
-}
-
-a {
-    color: inherit;
-    display: inline-block;
-    transition: all .3s ease;
-    &.anchor {
-        cursor: pointer;
-    }
-}
-
-path {
-    transition: all .3s ease;
-}
-
-img {
-    display: block;
-    max-width: 100%;
 }
 
 .holder {
@@ -93,10 +107,6 @@ img {
 }
 .hidden {
     display: none;
-}
-
-section {
-    scroll-margin-top: 100px;
 }
 
 #totop {
