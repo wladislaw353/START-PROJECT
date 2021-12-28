@@ -140,8 +140,8 @@
 <br>Скрипт находится в <code>main.js</code> (см. <code>GO TO TOP</code>)
 
 # <h4>Обработка кнопок поделиться в twitter, facebook и pinterest</h4>
-Добавьте кнопкам идентификаторы <code>#tw-shareq</code>, <code>#fb-shareq</code> и <code>#pt-shareq</code>  соотв. А также в <code>data-href</code> полный url страницы
-<br>Скрипт находится в <code>main.js</code> (см. <code>FB & TWITTER & PINTEREST SHARE BUTTON</code>)
+Добавьте кнопкам идентификаторы <code>#tw-shareq</code>, <code>#fb-shareq</code>, <code>#pt-shareq</code> и <code>#tg-shareq</code> соотв. А также в <code>data-href</code> полный url страницы
+<br>Скрипт находится в <code>main.js</code> (см. <code>FB & TWITTER & PINTEREST & TELEGRAM SHARE BUTTON</code>)
 
 # <h2>Анимация числового счетчика</h2>
 Раскомментируйте подключение файла <code>spincrement.js</code>

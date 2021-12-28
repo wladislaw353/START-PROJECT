@@ -256,7 +256,7 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
     })
 
 
-    // FB & TWITTER & PINTEREST SHARE BUTTONS
+    // FB & TWITTER & PINTEREST & TELEGRAM SHARE BUTTONS
     $('#fb-shareq').click(function() {
         open(`https://www.facebook.com/sharer.php?u=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
     })
@@ -265,6 +265,9 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
     })
     $('#pt-shareq').click(function() {
         open(`http://pinterest.com/pin/create/button/?url=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
+    })
+    $('#tg-shareq').click(function() {
+        open(`https://telegram.me/share/url?url=${$(this).data('href')}`, '_blank')
     })
 
 
