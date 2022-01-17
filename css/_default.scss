@@ -126,4 +126,8 @@ body::-webkit-scrollbar {
     @include _767 {
         right: 25px;
     }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
 }
