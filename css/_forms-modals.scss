@@ -22,14 +22,22 @@
     &:hover {
         color: #fff;
         background: #CAA94F;
-    }
-    &:hover:active {
-        color: #fff;
-        background: #d49e09;
+        &:active {
+            color: #fff;
+            background: #d49e09;
+        }
     }
     &:disabled {
         pointer-events: none;
         opacity: .5;
+    }
+    &.btn-empty {
+        &:hover {
+            
+            &:active {
+                
+            }
+        }
     }
 }
 

@@ -68,7 +68,18 @@ header {
         }
     }
     nav {
+        @include _767 {
+            position: absolute;
+            left: 0;
+            top: em(50);
+            width: 100%;
+            background: #fff;
+            display: none;
+        }
         & > ul {
+            @include _767 {
+                
+            }
             & > li {
                 list-style: none;
                 position: relative;
@@ -175,4 +186,12 @@ header {
 }
 
 
-
+.title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: em(48);
+    line-height: 130%;
+    @include _500 {
+        font-size: em(36);
+    }
+}
