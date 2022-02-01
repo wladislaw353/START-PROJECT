@@ -185,6 +185,19 @@ header {
     }
 }
 
+.swiper-pagination {
+    .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        border: 1px solid #dedede;
+        background: transparent;
+        opacity: 1;
+        &-active {
+            background: #d4a85d;
+            border-color: #d4a85d;
+        }
+    }
+}
 
 .title {
     text-transform: uppercase;

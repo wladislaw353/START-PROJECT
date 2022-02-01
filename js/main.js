@@ -22,6 +22,7 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
 			spaceBetween: 5,
 			freeMode: false,
             speed: 900,
+            effect: 'fade',
             draggable: true,
 			direction: 'horizontal',
             navigation: {
@@ -31,6 +32,7 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
+                clickable: true,
             },
             autoplay: {
                 delay: 5000,
@@ -47,9 +49,7 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
 				},
 			}
 		})
-        const swiper1 = document.querySelector(slider1).swiper
-        $('.slider-nav > *:first-child').click(()=> swiper1.slidePrev())
-        $('.slider-nav > *:last-child').click(()=> swiper1.slideNext())
+        // const swiper1 = document.querySelector(slider1).swiper
 	}
     
 
