@@ -103,7 +103,6 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
         $(this).parent().addClass('check-validation')
     })
 
-
     // MODAL
     $('[data-modalq-opener]').click(function() {
         const modal_id = $(this).data('modalq-opener')
