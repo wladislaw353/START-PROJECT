@@ -97,6 +97,7 @@ input, textarea, select {
         position: relative;
         border-radius: 2px;
         border-color: #B8B8B8;
+        padding: 0;
         &:after {
             content: '';
             position: absolute;
@@ -145,6 +146,7 @@ input, textarea, select {
         position: relative;
         border-radius: 100%;
         border-color: #B8B8B8;
+        padding: 0;
         &:after {
             content: '';
             position: absolute;
