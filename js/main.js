@@ -26,8 +26,8 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
             draggable: true,
 			direction: 'horizontal',
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: slider1 + ' .swiper-next',
+                prevEl: slider1 + ' .swiper-prev',
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -82,7 +82,8 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
             url: '/send.php',
             data: {msg: JSON.stringify(msg), utm: JSON.stringify(utm)},
             success: (data)=> {
-                if (typeof data === 'string') data = JSON.parse(data)
+                if (data && typeof data === 'string') data = JSON.parse(data)
+				if (data) console.log(data)
                 $('.modalq-wrapper').fadeIn().css('display', 'flex')
                 $('.modalq').hide()
                 $('#modalq-0').fadeIn()
