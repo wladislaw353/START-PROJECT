@@ -2,7 +2,7 @@
 @import '_media-queries.scss';
 
 section.seo-text {
-    font-size: em(18);
+    font-size: em(16);
     color: #000;
     // letter-spacing: em(1);
     font-family: inherit;
@@ -33,7 +33,7 @@ section.seo-text {
       display: block;
     }
     p {
-      margin-bottom: em(15, 18);
+      margin-bottom: em(15, 16);
       font-size: inherit;
       letter-spacing: inherit;
       font-family: inherit;
@@ -46,7 +46,7 @@ section.seo-text {
     }
     ul,
     ol {
-      margin-bottom: em(5, 18);
+      margin-bottom: em(5, 16);
       font-size: inherit;
       font-family: inherit;
       letter-spacing: inherit;
@@ -59,7 +59,7 @@ section.seo-text {
       list-style: inside decimal;
     }
     li {
-      margin-bottom: em(5, 18);
+      margin-bottom: em(5, 16);
       font-size: inherit;
       font-family: inherit;
       letter-spacing: inherit;
@@ -83,34 +83,34 @@ section.seo-text {
       height: auto;
     }
     h1 {
-      font-size: em(30, 18);
-      margin-bottom: em(10, 18);
-      margin-top: em(5, 18);
+      font-size: em(30, 16);
+      margin-bottom: em(10, 16);
+      margin-top: em(5, 16);
     }
     h2 {
-      font-size: em(28, 18);
-      margin-bottom: em(10, 18);
-      margin-top: em(5, 18);
+      font-size: em(28, 16);
+      margin-bottom: em(10, 16);
+      margin-top: em(5, 16);
     }
     h3 {
-      font-size: em(26, 18);
-      margin-bottom: em(10, 18);
-      margin-top: em(5, 18);
+      font-size: em(26, 16);
+      margin-bottom: em(10, 16);
+      margin-top: em(5, 16);
     }
     h4 {
-      font-size: em(24, 18);
-      margin-bottom: em(10, 18);
-      margin-top: em(5, 18);
+      font-size: em(24, 16);
+      margin-bottom: em(10, 16);
+      margin-top: em(5, 16);
     }
     h5 {
-      font-size: em(22, 18);
-      margin-bottom: em(10, 18);
-      margin-top: em(5, 18);
+      font-size: em(22, 16);
+      margin-bottom: em(10, 16);
+      margin-top: em(5, 16);
     }
     h6 {
-      font-size: em(20, 18);
-      margin-bottom: em(10, 18);
-      margin-top: em(5, 18);
+      font-size: em(20, 16);
+      margin-bottom: em(10, 16);
+      margin-top: em(5, 16);
     }
 }
 
