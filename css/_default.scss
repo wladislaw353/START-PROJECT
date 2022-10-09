@@ -112,6 +112,27 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+a[data-hover-text] {
+    font-weight: 500;
+    color: transparent;
+    position: relative;
+    &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: normal;
+        color: #261F17;
+        content: attr(data-text);
+        text-align: center;
+        width: 100%;
+    }
+    &:hover {
+        &:after {
+            font-weight: 500;
+        }
+    }
+}
+
 #totop {
     cursor: pointer;
     opacity: 0;
