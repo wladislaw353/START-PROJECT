@@ -254,6 +254,14 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
         $(this).data('text', $(this).find('span').text())
         $(this).find('span').text(text)
     })
+    
+    
+    // IFRAME
+    document.querySelectorAll('iframe').forEach((iframe) => { 
+        const iWidth = iframe.getAttribute('width')
+        const iHeight = iframe.getAttribute('height')
+        iframe.style.aspectRatio = iWidth / iHeight
+    })
 
 
     // FB & TWITTER & PINTEREST & TELEGRAM SHARE BUTTONS
