@@ -141,7 +141,7 @@ a[data-hover-text] {
     transition: all .3s ease;
     position: fixed;
     right: 42px;
-    bottom: 30px;
+    bottom: 15px;
     background: #fff;
     border-radius: 100%;
     border: 1px solid #003C7D;
@@ -149,7 +149,7 @@ a[data-hover-text] {
     padding: 7px 7px 7px;
     z-index: 99;
     @include _767 {
-        right: 25px;
+        right: 27px;
     }
     &.active {
         opacity: 1;
