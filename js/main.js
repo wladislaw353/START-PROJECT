@@ -8,7 +8,7 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
         setTimeout(() => {
             $('.preloader').fadeOut()
             new WOW().init()
-        }, is_home() ? 2000 : 1000)
+        }, is_home() ? 1500 : 1000)
     } else {
         new WOW().init()
     }
@@ -67,12 +67,27 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
 
 
     // TABS
-    $('.tab-container .tab-nav span').click(function() {
-        $('.tab-container .tab-nav span').removeClass('active')
-        $(this).addClass('active')
-        $('.tab-container .tab-content .item').hide().removeClass('active')
-        $(`.tab-container .tab-content .item:nth-child(${parseInt($(this).index()) + 1})`).fadeIn().addClass('active')
-    })
+    document.querySelectorAll('.tab-container .tab-nav [data-tab]').forEach(tab => {
+		tab.addEventListener('click', e => {
+			e.preventDefault()
+			const parent = tab.closest('.tab-container')
+			const tabs = Array.from(parent.querySelectorAll('.tab-nav [data-tab]'))
+			tabs.forEach(tab => tab.classList.remove('active'))
+			tab.classList.add('active')
+			const items = Array.from(parent.querySelectorAll('.tab-content > .item'))
+			items.forEach(item => {
+				item.style.display = 'none'
+				item.classList.remove('active')
+			})
+			const itemIndex = tabs.indexOf(tab)
+			items[itemIndex].style.display = 'block'
+			items[itemIndex].classList.add('active')
+			window.location.hash = tab.dataset.tab
+		})
+	})
+	// const hash = window.location.hash.slice(1)
+	// const tabHash = document.querySelector(`.tab-container .tab-nav [data-tab="${hash}"]`)
+	// if (tabHash) tabHash.click()
     
 
     // FORMS
@@ -181,16 +196,18 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
 
 
     // GO TO TOP
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 700) {
-			$('#totop').addClass('active')
+    const totopBtn = document.getElementById('totop')
+	window.addEventListener('scroll', () => {
+		if (window.pageYOffset > 700) {
+			totopBtn.classList.add('active')
 		} else {
-			$('#totop').removeClass('active')
+			totopBtn.classList.remove('active')
 		}
 	})
-    $('#totop').click(()=> {
-        $('html, body').animate({scrollTop: 0},700)
-    })
+	totopBtn.addEventListener('click', () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+		history.replaceState(null, null, ' ')
+	})
 
 
     // FIXED HEADER
@@ -264,29 +281,27 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
     })
 
 
-    // FB & TWITTER & PINTEREST & TELEGRAM SHARE BUTTONS
-    $('#fb-shareq').click(function() {
-        open(`https://www.facebook.com/sharer.php?u=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
-    })
-    $('#tw-shareq').click(function() {
-        open(`https://twitter.com/share?text=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
-    })
-    $('#pt-shareq').click(function() {
-        open(`http://pinterest.com/pin/create/button/?url=${$(this).data('href')}`, "displayWindow", "width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no")
-    })
-    $('#tg-shareq').click(function() {
-        open(`https://telegram.me/share/url?url=${$(this).data('href')}`, '_blank')
+    // SHARE BUTTON
+    const windowParams = 'width=520,height=300,left=350,top=170,status=no,toolbar=no,menubar=no'
+    document.querySelectorAll('[data-shareq]').forEach((btn) => {
+        btn.addEventListener('click', function () {
+            window.open(
+                'https://' + this.dataset.shareq + window.location.href,
+                this.dataset.type,
+                this.dataset.type=='displayWindow'?windowParams:false
+            )
+        })
     })
 
 
     // FANCYBOX
-    if ($('[data-fancybox]').length > 0) {
-        Fancybox.bind("[data-fancybox]", {
-            Thumbs: {
-              autoStart: false,
-            },
-        })
-    }
+    Fancybox.bind('[data-fancybox]', {
+		infinite: false,
+		hideClass: 'f-zoomOutDown',
+		Thumbs: {
+			autoStart: true,
+		},
+	})
 
 
 	// COUNTS ANIMATION
