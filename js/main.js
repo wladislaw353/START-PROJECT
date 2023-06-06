@@ -97,8 +97,8 @@ $(document).ready(()=> {const wwt=1;function is_home(){return($('body').hasClass
             url: '/send.php',
             data: {msg: JSON.stringify(msg), utm: JSON.stringify(utm)},
             success: (data)=> {
-                if (data && typeof data === 'string') data = JSON.parse(data)
-				if (data) console.log(data)
+                //if (data && typeof data === 'string') data = JSON.parse(data)
+				//if (data) console.log(data)
                 $('.modalq-wrapper').fadeIn().css('display', 'flex')
                 $('.modalq').hide()
                 $('#modalq-0').fadeIn()
