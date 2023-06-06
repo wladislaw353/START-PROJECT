@@ -26,8 +26,8 @@
 
     #-🔸-Telegram ----------------------------------------------------------------------------------
         $to_telegram = false;
-        $tg_token  = "5455439721:AAGB33vAZ7aLHarSA8C8QES-lDCFYNVrZXk"; // токен телеграм бота, создать в @BotFather
-        $tg_chatID = "-896920126"; // узнать id чата: https://api.telegram.org/bot5455439721:AAGB33vAZ7aLHarSA8C8QES-lDCFYNVrZXk/getUpdates
+        $tg_token  = ""; // токен телеграм бота, создать в @BotFather.
+        $tg_chatID = ""; // узнать id чата: https://api.telegram.org/bot{ТОКЕН}/getUpdates
         $tg_ip = false; // Присылать IP и UserAgent
 
     #-🔸-Bitrix24 ----------------------------------------------------------------------------------
