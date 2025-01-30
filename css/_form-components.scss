@@ -10,6 +10,7 @@
     text-align: center;
     display: inline-block;
     box-sizing: border-box;
+    min-width: 200px;
     transition: all .3s ease;
     border: 0;
     text-transform: uppercase;
@@ -18,7 +19,6 @@
     font-weight: 600;
     font-size: em(16);
     padding: em(19) em(5);
-    min-width: 200px;
     &:hover {
         color: #fff;
         background: #CAA94F;
@@ -50,12 +50,12 @@ input, textarea, select {
     width: 100%;
     transition: border .3s ease;
     appearance: none;
-    border: 0;
-    border-bottom: 1px solid #E0E0E0;
-    padding: em(18) 0;
-    background: transparent;
+    border: 1px solid #E0E0E0;
+    background: #fff;
     color: #000;
+    padding: em(18) 0;
     font-size: em(16);
+    margin-bottom: em(10);
     $placeholder_color: #BDBDBD;
     &:focus {
         border-color: #9A762D;
@@ -179,12 +179,6 @@ form.check-validation {
         &:invalid {
             border-color: #ED1C24;
         }
-    }
-}
-
-form {
-    input, textarea, select {
-        margin-bottom: 10px;
     }
 }
 

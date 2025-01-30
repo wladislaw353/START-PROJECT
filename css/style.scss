@@ -1,10 +1,9 @@
 @import '_default.scss';
 @import '_keyframes.scss';
-@import '_forms-modals.scss';
+@import '_form-components.scss';
 @import '_text-sections.scss';
 @import '_media-queries.scss';
 @import '_functions.scss';
-
 
 header {
     &.fixed-header {
@@ -110,7 +109,6 @@ header {
     }
 }
 
-
 .accordion {
     .item {
         .header {
@@ -158,7 +156,6 @@ header {
     }
 }
 
-
 .tab-container {
     .tab-nav {
         display: flex;
@@ -196,6 +193,46 @@ header {
             background: #d4a85d;
             border-color: #d4a85d;
         }
+    }
+}
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+#totop {
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+    position: fixed;
+    right: 42px;
+    bottom: 15px;
+    background: #fff;
+    border-radius: 100%;
+    border: 1px solid #003C7D;
+    display: flex;
+    padding: 7px 7px 7px;
+    z-index: 99;
+    @include _767 {
+        right: 27px;
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
     }
 }
 

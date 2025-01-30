@@ -69,7 +69,7 @@
 <br>
 <br>Перед отправкой, форме добавляется класс валидации <code>.check-validation</code>, который подтягивает стили для invalid элементов формы.
 <br>Скрипт находится в <code>main.js</code> (см. <code>FORMS</code>)
-<br>Стили можно изменить в <code>_forms-modals.scss</code> (см. <code>form.check-validation</code>)
+<br>Стили можно изменить в <code>_form-components.scss</code> (см. <code>form.check-validation</code>)
 
 # <h4>Файл send.php</h4>
 Все настройки отправщика выведены в конфиг в начало файла. Для добавления полей используйте массив <code>$lang_input_names</code>. В код лезть нет необходимости!
@@ -95,7 +95,7 @@
 <br>Используйте <code>data-modalq-target=""</code> в кнопке для передачи информации о цели в служебное поле target в форме модалки
 <br>Используйте <code>data-modalq-info=""</code> в кнопке для передачи html в модалку в блок <code>.modalq-info</code>
 <br>Скрипт находится в <code>main.js</code> (см. <code>MODAL</code>)
-<br>Стили в <code>_forms-modals.scss</code>
+<br>Стили в <code>_form-components.scss</code>
 
 # <h2>main.js</h2>
 Основной js файл проекта.

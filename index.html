@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <meta name="theme-color" content="#fff">
+
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9.1.0/swiper-bundle.min.css" as="style" onload="this.rel='stylesheet'">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" as="style" onload="this.rel='stylesheet'">
 	<link rel="stylesheet" href="css/style.min.css?v1">
-    <meta name="theme-color" content="#fff">
-    <link rel="preconnect" href="https://fonts.googleapis.com" rel="noopener noreferrer nofollow">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin rel="noopener noreferrer nofollow">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<meta name="description" content="">
+
+    <link rel="preconnect nofollow" href="https://fonts.googleapis.com">
+    <link rel="preconnect nofollow" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+
+    <meta name="description" content="">
     <title></title>
     <meta name="robots" content="noindex, nofollow">
 </head>
@@ -27,21 +31,21 @@
             </a>
             <div class="burger"></div>
             <nav>
-                <ul class="flex-container" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+                <ul class="flex-container">
                     <li>
-                        <a href="" itemprop="discussionUrl"></a>
+                        <a href=""></a>
                     </li>
                     <li>
-                        <a href="" itemprop="discussionUrl"></a>
+                        <a href=""></a>
                     </li>
                     <li>
-                        <a href="" itemprop="discussionUrl"></a>
+                        <a href=""></a>
                     </li>
                     <li>
-                        <a href="" itemprop="discussionUrl"></a>
+                        <a href=""></a>
                     </li>
                     <li>
-                        <a href="" itemprop="discussionUrl"></a>
+                        <a href=""></a>
                     </li>
                 </ul>
             </nav>
@@ -52,7 +56,7 @@
 
         <section class="">
             <div class="holder">
-                
+<!--                <button class="btn" data-fancybox data-src="#modal-1">Send Request</button>-->
             </div>
         </section>
 
@@ -95,34 +99,33 @@
     </div>
 
     <!-- Modals -->
-    <div class="modalq-wrapper">
-        <div class="modalq" id="modalq-0">
-            <svg data-modalq-close width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path fill="#888" d="M1.17209 24.0002C0.940287 24.0002 0.713675 23.9315 0.520921 23.8027C0.328167 23.674 0.177931 23.4909 0.0892164 23.2768C0.000501992 23.0626 -0.0227054 22.827 0.0225297 22.5996C0.0677649 22.3722 0.17941 22.1634 0.343344 21.9995L21.9996 0.34328C22.2194 0.123481 22.5175 0 22.8283 0C23.1392 0 23.4373 0.123481 23.6571 0.34328C23.8769 0.563078 24.0004 0.861188 24.0004 1.17203C24.0004 1.48287 23.8769 1.78098 23.6571 2.00078L2.00084 23.657C1.89211 23.766 1.76292 23.8524 1.6207 23.9113C1.47848 23.9702 1.32602 24.0004 1.17209 24.0002Z"/>
-                <path fill="#888" d="M22.8283 24.0002C22.6743 24.0004 22.5219 23.9702 22.3797 23.9113C22.2375 23.8524 22.1083 23.766 21.9995 23.657L0.34328 2.00078C0.123481 1.78098 0 1.48287 0 1.17203C0 0.861188 0.123481 0.563078 0.34328 0.34328C0.563078 0.123481 0.861188 0 1.17203 0C1.48287 0 1.78098 0.123481 2.00078 0.34328L23.657 21.9995C23.821 22.1634 23.9326 22.3722 23.9778 22.5996C24.0231 22.827 23.9999 23.0626 23.9112 23.2768C23.8224 23.4909 23.6722 23.674 23.4795 23.8027C23.2867 23.9315 23.0601 24.0002 22.8283 24.0002V24.0002Z"/>
-            </svg>
-            <div class="title">Спасибо!<br>Наш менеджер свяжется с Вами в ближайшее время!</div>
+    <div style="display: none">
+
+        <div id="modal-thanks" data-fancybox-modal>
+            <div class="modal-content">
+                <div class="title">Thanks!<br>We'll contact you soon!</div>
+            </div>
         </div>
-        <div class="modalq" id="modalq-1">
-            <svg data-modalq-close width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path fill="#888" d="M1.17209 24.0002C0.940287 24.0002 0.713675 23.9315 0.520921 23.8027C0.328167 23.674 0.177931 23.4909 0.0892164 23.2768C0.000501992 23.0626 -0.0227054 22.827 0.0225297 22.5996C0.0677649 22.3722 0.17941 22.1634 0.343344 21.9995L21.9996 0.34328C22.2194 0.123481 22.5175 0 22.8283 0C23.1392 0 23.4373 0.123481 23.6571 0.34328C23.8769 0.563078 24.0004 0.861188 24.0004 1.17203C24.0004 1.48287 23.8769 1.78098 23.6571 2.00078L2.00084 23.657C1.89211 23.766 1.76292 23.8524 1.6207 23.9113C1.47848 23.9702 1.32602 24.0004 1.17209 24.0002Z"/>
-                <path fill="#888" d="M22.8283 24.0002C22.6743 24.0004 22.5219 23.9702 22.3797 23.9113C22.2375 23.8524 22.1083 23.766 21.9995 23.657L0.34328 2.00078C0.123481 1.78098 0 1.48287 0 1.17203C0 0.861188 0.123481 0.563078 0.34328 0.34328C0.563078 0.123481 0.861188 0 1.17203 0C1.48287 0 1.78098 0.123481 2.00078 0.34328L23.657 21.9995C23.821 22.1634 23.9326 22.3722 23.9778 22.5996C24.0231 22.827 23.9999 23.0626 23.9112 23.2768C23.8224 23.4909 23.6722 23.674 23.4795 23.8027C23.2867 23.9315 23.0601 24.0002 22.8283 24.0002V24.0002Z"/>
-            </svg>
-            <form id="formx-1">
-                <input type="text" name="fname" placeholder="* Имя" autocomplete="given-name" required>
-                <input type="tel" name="phone" class="phone-mask" placeholder="* Номер телефона" autocomplete="tel" pattern="[^_]+" inputmode="numeric" required>
-                <input type="email" name="email" placeholder="E-mail" inputmode="email" autocomplete="email">
-                <textarea name="comment" placeholder="Комментарий"></textarea>
-                <input type="hidden" name="target" value="">
-                <button class="btn" type="submit">Отправить</button>
-            </form>
+
+        <div id="modal-1" data-fancybox-modal>
+            <div class="modal-content">
+                <form data-formx>
+                    <input type="text" name="fname" placeholder="* Name" autocomplete="given-name" required>
+                    <input type="tel" name="phone" class="phone-mask" placeholder="* Phone" autocomplete="tel" pattern="[^_]+" inputmode="numeric" required>
+                    <input type="email" name="email" placeholder="E-mail" inputmode="email" autocomplete="email">
+                    <textarea name="comment" placeholder="Comment"></textarea>
+                    <input type="hidden" name="target" value="">
+                    <button class="btn" type="submit">Send</button>
+                </form>
+            </div>
         </div>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@9.1.0/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-	<script src="js/spincrement.js"></script>
-    <script src="js/main.js?v1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
+	<script src="js/InputMask.js"></script>
+    <script src="js/main.js?v1" type="module"></script>
 </body>
 </html>
