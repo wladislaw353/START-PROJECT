@@ -4,15 +4,12 @@ import { social_share, helpers, is_iOS, get_utm, removeDiacritics, $ } from './u
 import { slideDown, slideUp, slideToggle } from './smooth_func.js'
 import { tabs, accordion, to_top } from './components.js'
 import { sticky_nav } from './sticky_nav.js'
-import { modals } from './modals.js'
 
 em_engine()
 
 document.addEventListener('DOMContentLoaded', () => {
 
   helpers()
-  
-  modals()
 
   // PRELOADER
   if (document.querySelector('.preloader')) {
