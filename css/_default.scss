@@ -86,6 +86,15 @@ section {
     display: none;
 }
 
+[data-modal-opener],
+[data-modal-closer] {
+    cursor: pointer;
+}
+
+.grecaptcha-badge {
+    display: none;
+}
+
 // CUSTOM SCROLL
 //::-webkit-scrollbar-track {
 //    background: #D6D6D6;

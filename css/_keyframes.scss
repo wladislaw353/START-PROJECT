@@ -1,4 +1,9 @@
-@charset "UTF-8";
+/*
+	@arrow - infinite up>down animation for "scroll down"
+	@rotate - infinite rotation
+	.fadeIn + Left/Down/Right/Up - from Animate.css. Use with data-animate=""
+	.zoomIn + Left/Down/Right/Up - from Animate.css. Use with data-animate=""
+ */
 
 @keyframes arrow {
     0% {
@@ -21,21 +26,14 @@
     }
 }
 
+[data-animate] {
+	opacity: 0;
+	will-change: transform;
+}
+
 .animated {
 	animation-duration: 1s;
-	animation-fill-mode: both
-}
-
-.animated.infinite {
-	animation-iteration-count: infinite
-}
-
-.animated.hinge {
-	animation-duration: 2s
-}
-
-.bounceOutUp {
-	animation-name: bounceOutUp
+	animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
@@ -119,6 +117,9 @@
 	50% {
 		opacity: 1
 	}
+	to {
+		opacity: 1
+	}
 }
 
 .zoomIn {
@@ -135,6 +136,9 @@
 		opacity: 1;
 		transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
 		animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
+	}
+	to {
+		opacity: 1
 	}
 }
 
@@ -153,6 +157,9 @@
 		transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
 		animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
 	}
+	to {
+		opacity: 1
+	}
 }
 
 .zoomInLeft {
@@ -170,6 +177,9 @@
 		transform: scale3d(.475, .475, .475) translate3d(-10px, 0, 0);
 		animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
 	}
+	to {
+		opacity: 1
+	}
 }
 
 .zoomInRight {
@@ -186,6 +196,9 @@
 		opacity: 1;
 		transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
 		animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
+	}
+	to {
+		opacity: 1
 	}
 }
 

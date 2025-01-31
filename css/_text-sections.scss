@@ -6,27 +6,6 @@ section.seo-text {
     color: #000;
     // letter-spacing: em(1);
     font-family: inherit;
-    .readmore-content {
-      -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
-      display: -webkit-box;
-      overflow: hidden;
-      & + .readmore {
-        margin: em(15) 0;
-        button {
-          
-        }
-      }
-      &.active {
-        position: relative;
-        -webkit-line-clamp: unset;
-        display: block;
-        overflow: unset;
-        & + .readmore button {
-  
-        }
-      }
-    }
     video,
     iframe {
       margin: 0 auto;
@@ -82,15 +61,35 @@ section.seo-text {
       max-width: 100%;
       height: auto;
     }
+    table {
+      width: 100%;
+      tr {
+        border-bottom: 1px solid #eeedfe;
+      }
+      th,
+      td {
+        padding: em(10) em(5);
+        text-align: left;
+        &:not(:last-child) {
+          border-right: 1px solid #eeedfe;
+        }
+      }
+    }
     h1 {
       font-size: em(30, 16);
       margin-bottom: em(10, 16);
       margin-top: em(5, 16);
+      &:first-child {
+        margin-top: 0;
+      }
     }
     h2 {
       font-size: em(28, 16);
       margin-bottom: em(10, 16);
       margin-top: em(5, 16);
+      &:first-child {
+        margin-top: 0;
+      }
     }
     h3 {
       font-size: em(26, 16);
@@ -114,16 +113,15 @@ section.seo-text {
     }
 }
 
-
 section.page-404 {
-    text-align: center;
-    min-height: calc(var(--vh, 100vh));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.page-404 p {
-	font-size: 22px;
-	margin-bottom: 15px;
+  text-align: center;
+  min-height: calc(var(--vh, 100vh));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-size: em(22);
+    margin-bottom: em(15, 22);
+  }
 }

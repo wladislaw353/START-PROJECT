@@ -1,5 +1,5 @@
 <!-- Modal opener -->
-<button class="btn" data-modalq-opener="1" data-modalq-target="Send Request">Send Request</button>
+<button class="btn" data-modal-opener="1" data-modal-target="Send Request">Send Request</button>
 
 <!-- Tabs -->
 <div class="tab-container">
@@ -17,15 +17,18 @@
 <div class="accordion">
     <div class="item">
         <div class="header">
+            <span></span>
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
                 <path stroke="#2C75FF" stroke-width="3" stroke-linecap="round" d="M20 38V20M20 20V2M20 20H38M20 20H2"/>
             </svg>
         </div>
-        <div class="content"></div>
+        <div class="content">
+            <p></p>
+        </div>
     </div>
 </div>
     
-<!-- Swiper -->
+<!-- Swiper Slider -->
 <div class="swiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -39,7 +42,15 @@
     </div>
 </div>
 
-<!-- FancyBox -->
+<!-- FancyBox Image Gallery -->
 <div href="" data-caption="" data-fancybox="gallery">
     <img src="" alt="">
 </div>
+
+<!-- Number animation -->
+<span data-number-anim="50"></span>
+<span data-number-anim="50, 100"></span>
+
+<!-- OnScroll animation -->
+<p data-animate="fadeInLeft"></p>
+<p data-animate="zoomInRight, 1.2"></p>

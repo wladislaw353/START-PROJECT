@@ -5,110 +5,6 @@
 @import '_media-queries.scss';
 @import '_functions.scss';
 
-header {
-    &.fixed-header {
-        
-    }
-    .logo {
-        display: flex;
-        img {
-            width: 100%;
-        }
-    }
-    .burger {
-        $bar-width: 35px;
-        $bar-height: 2px;
-        $bar-spacing: 7px;
-        $bar-color: #fff;
-        $breakpoint: 1000px;
-        position: relative;
-        background: $bar-color;
-        transition: all 0ms 300ms;
-        margin: 0 em(15);
-        flex-shrink: 0;
-        display: none;
-        @media(max-width: $breakpoint) {
-            display: flex;
-        }
-        &,
-        &:after,
-        &:before {
-            width: $bar-width;
-            height: $bar-height;
-        }
-        &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: $bar-spacing;
-            background: $bar-color;
-            transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        &:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: $bar-spacing;
-            background: $bar-color;
-            transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        &.active {
-            background: transparent !important;
-            &:after {
-                top: 0;
-                transform: rotate(45deg);
-                transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
-            }
-            &:before {
-                bottom: 0;
-                transform: rotate(-45deg);
-                transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
-            }
-        }
-    }
-    nav {
-        @include _767 {
-            position: absolute;
-            left: 0;
-            top: em(50);
-            width: 100%;
-            background: #fff;
-            display: none;
-        }
-        & > ul {
-            @include _767 {
-                
-            }
-            & > li {
-                list-style: none;
-                position: relative;
-                a {
-                    &.active,
-                    &:hover {
-                        
-                    }
-                }
-                ul {
-                    position: absolute;
-                    left: 0;
-                    top: em(20);
-                    opacity: 0;
-                    visibility: hidden;
-                    li {
-
-                    }
-                }
-                &:hover {
-                    ul {
-                        opacity: 1;
-                        visibility: visible;
-                    }
-                }
-            }
-        }
-    }
-}
-
 .accordion {
     .item {
         .header {
@@ -134,12 +30,13 @@ header {
             }
         }
         .content {
-            padding: em(15, 16);
             display: none;
             transition: box-shadow .3s ease;
             font-weight: 500;
-            font-size: em(16);
             line-height: 160%;
+            p {
+                padding: em(15) 0;
+            }
         }
         &.active {
             .header {
@@ -236,6 +133,23 @@ header {
     }
 }
 
+.fancybox__backdrop {
+    background: rgba(0, 0, 0, .65);
+    backdrop-filter: blur(7px);
+}
+.fancybox__slide {
+    padding: em(30);
+}
+.modal {
+    max-width: 500px;
+    padding: em(50);
+    [data-modal-closer] {
+        position: absolute;
+        right: em(10);
+        top: em(10);
+    }
+}
+
 .title {
     text-transform: uppercase;
     font-weight: 500;
@@ -243,5 +157,110 @@ header {
     line-height: 130%;
     @include _500 {
         font-size: em(36);
+    }
+}
+
+
+header {
+    &.fixed-header {
+
+    }
+    .logo {
+        display: flex;
+        img {
+            width: 100%;
+        }
+    }
+    .burger {
+        $bar-width: 35px;
+        $bar-height: 2px;
+        $bar-spacing: 7px;
+        $bar-color: #fff;
+        $breakpoint: 1000px;
+        position: relative;
+        background: $bar-color;
+        transition: all 0ms 300ms;
+        margin: 0 em(15);
+        flex-shrink: 0;
+        display: none;
+        @media(max-width: $breakpoint) {
+            display: flex;
+        }
+        &,
+        &:after,
+        &:before {
+            width: $bar-width;
+            height: $bar-height;
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: $bar-spacing;
+            background: $bar-color;
+            transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: $bar-spacing;
+            background: $bar-color;
+            transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        &.active {
+            background: transparent !important;
+            &:after {
+                top: 0;
+                transform: rotate(45deg);
+                transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            &:before {
+                bottom: 0;
+                transform: rotate(-45deg);
+                transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        }
+    }
+    nav {
+        @include _767 {
+            position: absolute;
+            left: 0;
+            top: em(50);
+            width: 100%;
+            background: #fff;
+            display: none;
+        }
+        & > ul {
+            @include _767 {
+
+            }
+            & > li {
+                list-style: none;
+                position: relative;
+                a {
+                    &.active,
+                    &:hover {
+
+                    }
+                }
+                ul {
+                    position: absolute;
+                    left: 0;
+                    top: em(20);
+                    opacity: 0;
+                    visibility: hidden;
+                    li {
+
+                    }
+                }
+                &:hover {
+                    ul {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
     }
 }
