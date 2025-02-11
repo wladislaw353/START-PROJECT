@@ -6,24 +6,24 @@
  */
 
 @keyframes arrow {
-    0% {
-        transform: translateY(0);
-    }
-    30% {
-        transform: translateY(10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+	0% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
 }
 
 @keyframes rotate {
-    0% {
+	0% {
 		transform: rotate(0);
-    }
-    100% {
-        transform: rotate(359deg);
-    }
+	}
+	100% {
+		transform: rotate(359deg);
+	}
 }
 
 [data-animate] {

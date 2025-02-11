@@ -6,7 +6,10 @@
     padding: 0;
     outline: none;
     box-sizing: border-box;
+}
+body {
     font-family: 'Montserrat', sans-serif;
+    color: #000;
 }
 table {
     border-collapse: collapse;
@@ -46,6 +49,16 @@ a {
 }
 section {
     scroll-margin-top: 100px;
+    padding: em(120) 0;
+    @incude _500 {
+        padding: em(60) 0;
+    }
+}
+.pt0 {
+    padding-top: 0;
+}
+.pb0 {
+    padding-bottom: 0;
 }
 
 .holder {
@@ -68,6 +81,9 @@ section {
 .flex-container {
     display: flex;
     align-items: center;
+}
+.fdc {
+    flex-direction: column;
 }
 
 .align-left {

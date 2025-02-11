@@ -2,115 +2,142 @@
 @import '_media-queries.scss';
 
 section.seo-text {
-    font-size: em(16);
-    color: #000;
-    // letter-spacing: em(1);
+  $base-font-size: 16;
+  font-size: em($base-font-size);
+  color: #000;
+  // letter-spacing: em(1);
+  font-family: inherit;
+  video,
+  iframe {
+    margin: 0 auto;
+    display: block;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  p {
+    margin-bottom: em(15, $base-font-size);
+    font-size: inherit;
+    letter-spacing: inherit;
     font-family: inherit;
-    video,
-    iframe {
-      margin: 0 auto;
-      display: block;
+    color: inherit;
+  }
+  &.indent {
+    h1 ~ p {
+      text-indent: 1.5em;
     }
-    p {
-      margin-bottom: em(15, 16);
-      font-size: inherit;
-      letter-spacing: inherit;
-      font-family: inherit;
-      color: inherit;
-    }
-    &.indent {
-      h1 ~ p {
-        text-indent: 1.5em;
-      }
-    }
-    ul,
-    ol {
-      margin-bottom: em(5, 16);
-      font-size: inherit;
-      font-family: inherit;
-      letter-spacing: inherit;
-      color: inherit;
-    }
-    ul {
-      list-style: inside disc;
-    }
-    ol {
-      list-style: inside decimal;
-    }
-    li {
-      margin-bottom: em(5, 16);
-      font-size: inherit;
-      font-family: inherit;
-      letter-spacing: inherit;
-      color: inherit;
-    }
-    p *,
-    li * {
-      font-size: inherit;
-      letter-spacing: inherit;
-      color: inherit;
-      font-family: inherit;
-    }
-    a:not(.btn) {
-      text-decoration: underline;
-    }
-    a:not(.btn):hover {
+  }
+  ul,
+  ol {
+    margin-bottom: em(5, $base-font-size);
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  ul {
+    list-style: inside disc;
+  }
+  ol {
+    list-style: inside decimal;
+  }
+  li {
+    margin-bottom: em(5, $base-font-size);
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  p *,
+  li * {
+    font-size: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    font-family: inherit;
+  }
+  a:not(.btn) {
+    text-decoration: underline;
+    &:hover {
       text-decoration: none;
     }
-    img {
-      max-width: 100%;
-      height: auto;
+  }
+  table {
+    width: 100%;
+    tr {
+      border-bottom: 1px solid #eeedfe;
     }
-    table {
-      width: 100%;
-      tr {
-        border-bottom: 1px solid #eeedfe;
-      }
-      th,
-      td {
-        padding: em(10) em(5);
-        text-align: left;
-        &:not(:last-child) {
-          border-right: 1px solid #eeedfe;
-        }
+    th,
+    td {
+      padding: em(10, $base-font-size) em(5, $base-font-size);
+      text-align: left;
+
+      &:not(:last-child) {
+        border-right: 1px solid #eeedfe;
       }
     }
-    h1 {
-      font-size: em(30, 16);
-      margin-bottom: em(10, 16);
-      margin-top: em(5, 16);
-      &:first-child {
-        margin-top: 0;
-      }
+  }
+  h1 {
+    font-size: em(30, $base-font-size);
+    margin-bottom: em(10, $base-font-size);
+    margin-top: em(5, $base-font-size);
+    &:first-child {
+      margin-top: 0;
     }
-    h2 {
-      font-size: em(28, 16);
-      margin-bottom: em(10, 16);
-      margin-top: em(5, 16);
-      &:first-child {
-        margin-top: 0;
-      }
+  }
+  h2 {
+    font-size: em(28, $base-font-size);
+    margin-bottom: em(10, $base-font-size);
+    margin-top: em(5, $base-font-size);
+    &:first-child {
+      margin-top: 0;
     }
-    h3 {
-      font-size: em(26, 16);
-      margin-bottom: em(10, 16);
-      margin-top: em(5, 16);
-    }
-    h4 {
-      font-size: em(24, 16);
-      margin-bottom: em(10, 16);
-      margin-top: em(5, 16);
-    }
-    h5 {
-      font-size: em(22, 16);
-      margin-bottom: em(10, 16);
-      margin-top: em(5, 16);
-    }
-    h6 {
-      font-size: em(20, 16);
-      margin-bottom: em(10, 16);
-      margin-top: em(5, 16);
-    }
+  }
+  h3 {
+    font-size: em(26, $base-font-size);
+    margin-bottom: em(10, $base-font-size);
+    margin-top: em(5, $base-font-size);
+  }
+  h4 {
+    font-size: em(24, $base-font-size);
+    margin-bottom: em(10, $base-font-size);
+    margin-top: em(5, $base-font-size);
+  }
+  h5 {
+    font-size: em(22, $base-font-size);
+    margin-bottom: em(10, $base-font-size);
+    margin-top: em(5, $base-font-size);
+  }
+  h6 {
+    font-size: em(20, $base-font-size);
+    margin-bottom: em(10, $base-font-size);
+    margin-top: em(5, $base-font-size);
+  }
+  blockquote {
+    margin: em(10, $base-font-size) 0;
+    padding-left: em(15, $base-font-size);
+    border-left: 3px solid #ccc;
+    font-style: italic;
+    color: inherit;
+  }
+  pre {
+    background: #f5f5f5;
+    padding: em(10, $base-font-size);
+    overflow: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: inherit;
+  }
+  code {
+    background: #f5f5f5;
+    padding: 0 em(5, $base-font-size);
+    font-family: 'Courier New', Courier, monospace;
+    color: inherit;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: em(20, $base-font-size) 0;
+  }
 }
 
 section.page-404 {

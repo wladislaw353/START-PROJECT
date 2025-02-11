@@ -94,16 +94,7 @@
 }
 
 .preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 9999;
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // common style in html for fast loading
     &.active {
         opacity: 0;
         visibility: hidden;
