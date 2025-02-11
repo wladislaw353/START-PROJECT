@@ -1,8 +1,13 @@
 /*
   Need swiper.js
   Use .fullscreen on .swiper in html and set paddingElement here as reference for left padding
-  Use .mobileOnly on .swiper in html to run init just on phone
-  Use data-slides-per-view="4" in html with count
+  Use .mobileOnly on .swiper in html to run init just on phone (<=550px)
+  Use data-slides="4" in html with count
+  Use data-speed="1000" in html to set speed
+  Use data-fade in html for fade effect
+  Use data-gap-off in html for set gap 0
+  Use data-loop in html for infinity swipe
+  Use data-parallax in html for turn on parallax (https://swiperjs.com/swiper-api#parallax)
   Use data-pagination="false" in html to turn off .swiper-pagination (.swiper + .swiper-pagination)
  */
 
@@ -11,51 +16,78 @@ export const sliders = () => {
   let mobileOnlySwiperInstances = []
 
   swipers.forEach(swiperElement => {
-    const slidesPerView = swiperElement.dataset.slidesPerView || 3
+    const gap = swiperElement.dataset.gapOff !== undefined ? 0 : null
+    const speed = swiperElement.dataset.speed || 350
+    const slidesPerView = swiperElement.dataset.slides || 1
     const showPagination = swiperElement.dataset.pagination !== 'false'
     const isMobileOnly = swiperElement.classList.contains('mobileOnly')
 
     const initializeSwiper = () => {
-      return new Swiper(swiperElement, {
+      const swiperOptions = {
         slidesPerView: 1,
-        spaceBetween: 24,
+        spaceBetween: gap ?? 24,
+        speed: speed,
         freeMode: false,
         draggable: true,
         direction: 'horizontal',
         pagination: showPagination
-          ? {
+            ? {
               el: swiperElement.nextElementSibling,
               clickable: true
             }
-          : false,
+            : false,
         autoplay: {
-          delay: 5000
+          delay: 3000
         },
         breakpoints: {
           ...(isMobileOnly
-            ? {
+              ? {
                 550: {
                   slidesPerView: 0,
                   spaceBetween: 0,
                   enabled: false
                 }
               }
-            : {
+              : {
                 600: {
                   slidesPerView: Math.min(2, slidesPerView),
-                  spaceBetween: 24
+                  spaceBetween: gap ?? 24
                 },
                 950: {
                   slidesPerView: Math.min(3, slidesPerView),
-                  spaceBetween: 32
+                  spaceBetween: gap ?? 32
                 },
                 1200: {
                   slidesPerView: parseFloat(slidesPerView),
-                  spaceBetween: 32
+                  spaceBetween: gap ?? 32
                 }
               })
         }
-      })
+      }
+
+      if (swiperElement.dataset.fade !== undefined) {
+        swiperOptions.effect = 'fade'
+        swiperOptions.fadeEffect = { crossFade: true }
+      }
+
+      if (swiperElement.dataset.parallax !== undefined) {
+        swiperOptions.parallax = true
+      }
+
+      if (swiperElement.dataset.loop !== undefined) {
+        swiperOptions.loop = true
+      }
+
+      const nextArrow = swiperElement.parentElement.querySelector('.swiper-button-next')
+      const prevArrow = swiperElement.parentElement.querySelector('.swiper-button-prev')
+      if (nextArrow && prevArrow) {
+        swiperOptions.navigation = {
+          nextEl: nextArrow,
+          prevEl: prevArrow
+        }
+      }
+
+      return new Swiper(swiperElement, swiperOptions)
     }
 
     if (isMobileOnly) {
@@ -84,7 +116,7 @@ export const sliders = () => {
   const fullscreenSwipers = document.querySelectorAll('.swiper.fullscreen')
   if (fullscreenSwipers.length) {
     const updateSliderPadding = () => {
-      const paddingElement = document.querySelector('.title')
+      const paddingElement = document.querySelector('.holder')
       if (!paddingElement) return
 
       const leftPadding = paddingElement.getBoundingClientRect().left
