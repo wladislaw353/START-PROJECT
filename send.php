@@ -61,6 +61,8 @@ $keycrm_pid = 1;
 //    use PHPMailer\PHPMailer\PHPMailer;
 //    use PHPMailer\PHPMailer\Exception;
 
+# ==== YOU DON'T NEED TO EDIT CODE BELOW ===========================================================
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     exit('Method Not Allowed');
@@ -113,6 +115,28 @@ $user_info = [
 $user_info_html = "<br><br><p>IP: {$user_info['ip']}</p>";
 $user_info_text = "\n\nIP: {$user_info['ip']}";
 
+$uploaded_files = [];
+if (!empty($_FILES)) {
+    foreach ($_FILES as $field => $file) {
+        if (isset($file['error']) && $file['error'] === UPLOAD_ERR_OK) {
+            $uploaded_files[] = $file;
+        }
+        elseif (is_array($file['error'])) {
+            for ($i = 0; $i < count($file['error']); $i++) {
+                if ($file['error'][$i] === UPLOAD_ERR_OK) {
+                    $uploaded_files[] = [
+                        'name'     => $file['name'][$i],
+                        'type'     => $file['type'][$i],
+                        'tmp_name' => $file['tmp_name'][$i],
+                        'error'    => $file['error'][$i],
+                        'size'     => $file['size'][$i],
+                    ];
+                }
+            }
+        }
+    }
+}
+
 function sendErrorToDev($error_msg)
 {
     global $dev_mail;
@@ -125,7 +149,6 @@ function sendErrorToDev($error_msg)
 }
 
 if ($to_email) {
-    // Prepare email message
     $msg = '<table>';
     foreach ($data as $key => $value) {
         if (isset($lang_input_names[$key])) {
@@ -147,9 +170,9 @@ if ($to_email) {
     }
     $msg .= '</table>' . $user_info_html;
 
-    if ($use_smtp && class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
+    if ($use_smtp && class_exists('PHPMailer\PHPMailer\PHPMailer')) {
         try {
-            $mail = new PHPMailer(true);
+            $mail = new PHPMailer\PHPMailer\PHPMailer(true);
             $mail->isSMTP();
             $mail->Host = $smtp_config['host'];
             $mail->SMTPAuth = true;
@@ -164,21 +187,47 @@ if ($to_email) {
             $mail->Subject = $title_text;
             $mail->Body = $msg;
 
+            foreach ($uploaded_files as $file) {
+                $mail->addAttachment($file['tmp_name'], $file['name']);
+            }
+
             if (!$mail->send()) {
                 sendErrorToDev("SMTP sending error: {$mail->ErrorInfo}");
             }
         } catch (Exception $e) {
             sendErrorToDev("SMTP error: {$e->getMessage()}");
-            $from = 'order' . rand(1000, 10000) . '@' . $_SERVER['SERVER_NAME'];
-            $headers = "From: $from\r\nContent-type: text/html; charset=utf-8";
-            if (!mail($send_to_mail, $title_text, $msg, $headers)) {
-                sendErrorToDev("Regular mail sending error to: $send_to_mail");
-            }
         }
-    } else {
+    }
+    elseif (!empty($uploaded_files)) {
+        $from = 'order' . rand(1000, 10000) . '@' . $_SERVER['SERVER_NAME'];
+        $boundary = md5(time());
+        $headers = "From: $from\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+
+        $body = "--$boundary\r\n";
+        $body .= "Content-Type: text/html; charset=utf-8\r\n";
+        $body .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+        $body .= $msg . "\r\n";
+
+        foreach ($uploaded_files as $file) {
+            $file_content = file_get_contents($file['tmp_name']);
+            $file_content = chunk_split(base64_encode($file_content));
+            $body .= "--$boundary\r\n";
+            $body .= 'Content-Type: ' . $file['type'] . "; name=\"" . $file['name'] . "\"\r\n";
+            $body .= "Content-Transfer-Encoding: base64\r\n";
+            $body .= "Content-Disposition: attachment; filename=\"" . $file['name'] . "\"\r\n\r\n";
+            $body .= $file_content . "\r\n";
+        }
+        $body .= "--$boundary--";
+
+        if (!mail($send_to_mail, $title_text, $body, $headers)) {
+            sendErrorToDev("Regular mail sending error to: $send_to_mail");
+        }
+    }
+    else {
         $from = 'order' . rand(1000, 10000) . '@' . $_SERVER['SERVER_NAME'];
         $headers = "From: $from\r\nContent-type: text/html; charset=utf-8";
-
         if (!mail($send_to_mail, $title_text, $msg, $headers)) {
             sendErrorToDev("Regular mail sending error to: $send_to_mail");
         }
@@ -198,20 +247,19 @@ if ($to_telegram && !empty($tg_token) && !empty($tg_chatID)) {
             $tg_msg .= "\n$key: $value";
         }
     }
-
     if ($tg_ip) {
         $tg_msg .= $user_info_text;
     }
 
     $ch = curl_init();
     curl_setopt_array($ch, [
-        CURLOPT_URL => "https://api.telegram.org/bot$tg_token/sendMessage",
-        CURLOPT_POST => 1,
+        CURLOPT_URL            => "https://api.telegram.org/bot$tg_token/sendMessage",
+        CURLOPT_POST           => 1,
         CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_TIMEOUT => 10,
-        CURLOPT_POSTFIELDS => [
-            'chat_id' => $tg_chatID,
-            'text' => $tg_msg,
+        CURLOPT_TIMEOUT        => 10,
+        CURLOPT_POSTFIELDS     => [
+            'chat_id'    => $tg_chatID,
+            'text'       => $tg_msg,
             'parse_mode' => 'html'
         ]
     ]);
@@ -220,6 +268,28 @@ if ($to_telegram && !empty($tg_token) && !empty($tg_chatID)) {
         sendErrorToDev('Telegram sending error: ' . curl_error($ch));
     }
     curl_close($ch);
+
+    if (!empty($uploaded_files)) {
+        foreach ($uploaded_files as $file) {
+            $ch = curl_init();
+            $post_fields = [
+                'chat_id'  => $tg_chatID,
+                'document' => new CURLFile($file['tmp_name'], $file['type'], $file['name']),
+                'caption'  => 'File attachment: ' . $file['name']
+            ];
+            curl_setopt_array($ch, [
+                CURLOPT_URL            => "https://api.telegram.org/bot$tg_token/sendDocument",
+                CURLOPT_POST           => 1,
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_TIMEOUT        => 10,
+                CURLOPT_POSTFIELDS     => $post_fields
+            ]);
+            if (!curl_exec($ch)) {
+                sendErrorToDev('Telegram document sending error: ' . curl_error($ch));
+            }
+            curl_close($ch);
+        }
+    }
 }
 
 if ($to_lp && !empty($lp_api_key) && !empty($lp_domain)) {
