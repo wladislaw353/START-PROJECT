@@ -167,14 +167,13 @@ header {
         $bar-height: 2px;
         $bar-spacing: 7px;
         $bar-color: #fff;
-        $breakpoint: 1000px;
         position: relative;
         background: $bar-color;
         transition: all 0ms 300ms;
         margin: 0 em(15);
         flex-shrink: 0;
         display: none;
-        @media(max-width: $breakpoint) {
+        @include _767 {
             display: flex;
         }
         &,
