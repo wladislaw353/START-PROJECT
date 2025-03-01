@@ -47,14 +47,32 @@ export const helpers = () => {
     element.removeAttribute('href')
   })
 
-  // FIXED HEADER
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('header')
-    const top = window.scrollY
+  // TEXTAREA AUTO-HEIGHT
+  const textareas = document.querySelectorAll('textarea')
+  if (!textareas.length) return
+  const adjustHeight = (textarea) => {
+    textarea.style.height = 'auto'
+    textarea.style.height = `${textarea.scrollHeight+5}px`
+  }
+  textareas.forEach(textarea => {
+    adjustHeight(textarea)
+    textarea.addEventListener('input', () => adjustHeight(textarea))
+    textarea.addEventListener('focus', () => adjustHeight(textarea))
+    new MutationObserver(() => adjustHeight(textarea)).observe(textarea, {
+      childList: true, characterData: true, subtree: true
+    })
+  })
+}
 
-    if (top > 20) {
+export const fixed_header = (scroll) => {
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const header = document.querySelector('header')
+    if (scroll < 60) scroll = 60
+    if (scrollTop > scroll) {
       header.classList.add('fixed-header')
-    } else {
+    }
+    if (scrollTop < scroll - 50) {
       header.classList.remove('fixed-header')
     }
   })
