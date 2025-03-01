@@ -1,6 +1,6 @@
 import { em_engine } from './em_engine.js'
 import { sliders } from './sliders.js'
-import { social_share, helpers, is_iOS, get_utm, removeDiacritics, $ } from './utils.js'
+import { social_share, helpers, is_iOS, get_utm, removeDiacritics, fixed_header, $ } from './utils.js'
 import { slideDown, slideUp, slideToggle } from './smooth_func.js'
 import { tabs, accordion, to_top } from './components.js'
 import { sticky_nav } from './sticky_nav.js'
@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   helpers()
 
   modal()
+
+  fixed_header(100)
 
   form('send.php')
   
@@ -44,17 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hideClass: 'f-zoomOutDown',
     Thumbs: {
       autoStart: true,
-    }
-  })
-
-  // FIXED HEADER
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop
-    const header = document.querySelector('header')
-    if (scrollTop > 100) {
-      header.classList.add('fixed-header');
-    } else {
-      header.classList.remove('fixed-header')
     }
   })
 
