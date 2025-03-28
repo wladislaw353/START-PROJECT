@@ -1,7 +1,7 @@
 /*
   Use #sr_fb for Facebook in html
   Use #sr_in for LinkedIn in html
-  Use #sr_x for X(Twitter) in html
+  Use #sr_x for X in html
 
   Use is_IOS in main.js to detect iOS devises
   Use get_utm in main.js to get utm from current page
@@ -27,7 +27,7 @@ export const social_share = () => {
 
   setupShareLink('sr_in', `https://www.linkedin.com/shareArticle?mini=true&url=${currentURL}&title=${title}`)
 
-  setupShareLink('sr_x', `https://twitter.com/intent/tweet?url=${currentURL}&text=${title}`)
+  setupShareLink('sr_x', `https://x.com/intent/post?url=${currentURL}&text=${title}`)
 }
 
 export const helpers = () => {
