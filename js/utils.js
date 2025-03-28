@@ -6,11 +6,7 @@
   Use is_IOS in main.js to detect iOS devises
   Use get_utm in main.js to get utm from current page
   Use removeDiacritics with text as argument
-
-  Use $ instead of document.querySelector and some basic methods from jQuery
  */
-
-import { slideDown, slideToggle, slideUp } from './smooth_func.js'
 
 export const social_share = () => {
   function setupShareLink(elementId, urlTemplate) {
@@ -114,70 +110,6 @@ export const get_utm = () => {
     utm_content: get_params['utm_content'] ? get_params['utm_content'] : '',
     utm_term: get_params['utm_term'] ? get_params['utm_term'] : ''
   }
-}
-
-// Replace document.querySelector with $
-export const $ = (selector, parent = document) => {
-  const elements = parent.querySelectorAll(selector)
-
-  elements.html = html => {
-    elements.forEach(el => (el.innerHTML = html))
-    return elements
-  }
-
-  elements.addClass = className => {
-    elements.forEach(el => el.classList.add(className))
-    return elements
-  }
-
-  elements.removeClass = className => {
-    elements.forEach(el => el.classList.remove(className))
-    return elements
-  }
-
-  elements.toggleClass = className => {
-    elements.forEach(el => el.classList.toggle(className))
-    return elements
-  }
-
-  elements.slideUp = (duration = 300) => {
-    elements.forEach(element => slideUp(element, duration))
-    return elements
-  }
-
-  elements.slideDown = (duration = 300) => {
-    elements.forEach(element => slideDown(element, duration))
-    return elements
-  }
-
-  elements.slideToggle = (duration = 300) => {
-    elements.forEach(element => slideToggle(element, duration))
-    return elements
-  }
-
-  elements.click = handler => {
-    if (handler) {
-      return elements.on('click', handler)
-    } else {
-      elements.forEach(el => el.click())
-    }
-    return elements
-  }
-
-  elements.attr = (name, value) => {
-    if (value === undefined) {
-      return elements[0] ? elements[0].getAttribute(name) : null
-    }
-    elements.forEach(el => el.setAttribute(name, value))
-    return elements
-  }
-
-  elements.removeAttr = name => {
-    elements.forEach(el => el.removeAttribute(name))
-    return elements
-  }
-
-  return elements.length === 1 ? elements[0] : elements
 }
 
 export const removeDiacritics = text => {
