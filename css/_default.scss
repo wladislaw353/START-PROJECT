@@ -51,7 +51,7 @@ a {
 section {
     scroll-margin-top: 100px;
     padding: em(120) 0;
-    @incude _500 {
+    @include _500 {
         padding: em(60) 0;
     }
 }

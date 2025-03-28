@@ -58,4 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     header.classList.toggle('active')
     burger.classList.toggle('active')
   })
+
+  console.log(get_utm())
 })

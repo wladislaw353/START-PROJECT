@@ -19,38 +19,34 @@ export const social_share = () => {
       })
     }
   }
-
   const currentURL = window.location.href
   const title = document.title
-
   setupShareLink('sr_fb', `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`)
-
   setupShareLink('sr_in', `https://www.linkedin.com/shareArticle?mini=true&url=${currentURL}&title=${title}`)
-
   setupShareLink('sr_x', `https://x.com/intent/post?url=${currentURL}&text=${title}`)
 }
 
 export const helpers = () => {
   // IFRAME
-  document.querySelectorAll('iframe').forEach(iframe => {
-    const iWidth = iframe.getAttribute('width')
-    const iHeight = iframe.getAttribute('height')
-    iframe.style.aspectRatio = iWidth / iHeight
+  document.querySelectorAll('iframe, video').forEach(el => {
+    const width = parseInt(el.getAttribute('width'))
+    const height = parseInt(el.getAttribute('height'))
+    el.style.aspectRatio = (width / height).toString()
   })
 
   // REMOVE EMPTY LINKS
-  document.querySelectorAll('[href="#"]').forEach(element => {
-    element.removeAttribute('href')
+  document.querySelectorAll('[href="#"]').forEach(el => {
+    el.removeAttribute('href')
   })
 
   // TEXTAREA AUTO-HEIGHT
-  const textareas = document.querySelectorAll('textarea')
-  if (!textareas.length) return
+  const textareaFields = document.querySelectorAll('textarea')
+  if (!textareaFields.length) return
   const adjustHeight = (textarea) => {
     textarea.style.height = 'auto'
     textarea.style.height = `${textarea.scrollHeight+5}px`
   }
-  textareas.forEach(textarea => {
+  textareaFields.forEach(textarea => {
     adjustHeight(textarea)
     textarea.addEventListener('input', () => adjustHeight(textarea))
     textarea.addEventListener('focus', () => adjustHeight(textarea))
@@ -64,13 +60,10 @@ export const helpers = () => {
 function setMainMinHeight() {
   const main = document.querySelector('main');
   if (!main) return;
-
   const header = document.querySelector('header');
   const footer = document.querySelector('footer');
-
   const headerHeight = header ? header.offsetHeight : 0;
   const footerHeight = footer ? footer.offsetHeight : 0;
-
   main.style.minHeight = `${window.innerHeight - headerHeight - footerHeight}px`;
 }
 setMainMinHeight()
@@ -96,136 +89,15 @@ export const is_iOS = () => {
 }
 
 export const get_utm = () => {
-  const get_params = window.location.search
-    .replace('?', '')
-    .split('&')
-    .reduce(function (b, c) {
-      const d = c.split('=')
-      return (b[decodeURIComponent(d[0])] = decodeURIComponent(d[1])), b
-    }, {})
-  const utm = {
-    utm_source: get_params['utm_source'] ? get_params['utm_source'] : '',
-    utm_medium: get_params['utm_medium'] ? get_params['utm_medium'] : '',
-    utm_campaign: get_params['utm_campaign'] ? get_params['utm_campaign'] : '',
-    utm_content: get_params['utm_content'] ? get_params['utm_content'] : '',
-    utm_term: get_params['utm_term'] ? get_params['utm_term'] : ''
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get('utm_source') || '',
+    utm_medium: params.get('utm_medium') || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    utm_content: params.get('utm_content') || '',
+    utm_term: params.get('utm_term') || ''
   }
 }
 
-export const removeDiacritics = text => {
-  const diacritics = {
-    á: 'a',
-    à: 'a',
-    â: 'a',
-    ã: 'a',
-    ä: 'a',
-    å: 'a',
-    ą: 'a',
-    ā: 'a',
-    č: 'c',
-    ç: 'c',
-    ć: 'c',
-    ď: 'd',
-    đ: 'd',
-    é: 'e',
-    è: 'e',
-    ê: 'e',
-    ë: 'e',
-    ě: 'e',
-    ę: 'e',
-    ē: 'e',
-    í: 'i',
-    ì: 'i',
-    î: 'i',
-    ï: 'i',
-    ī: 'i',
-    ł: 'l',
-    ñ: 'n',
-    ń: 'n',
-    ň: 'n',
-    ó: 'o',
-    ò: 'o',
-    ô: 'o',
-    õ: 'o',
-    ö: 'o',
-    ø: 'o',
-    ō: 'o',
-    ř: 'r',
-    ŕ: 'r',
-    š: 's',
-    ś: 's',
-    ş: 's',
-    ß: 'ss',
-    ť: 't',
-    ú: 'u',
-    ù: 'u',
-    û: 'u',
-    ü: 'u',
-    ů: 'u',
-    ū: 'u',
-    ý: 'y',
-    ÿ: 'y',
-    ž: 'z',
-    ź: 'z',
-    ż: 'z',
-    Á: 'A',
-    À: 'A',
-    Â: 'A',
-    Ã: 'A',
-    Ä: 'A',
-    Å: 'A',
-    Ą: 'A',
-    Ā: 'A',
-    Č: 'C',
-    Ç: 'C',
-    Ć: 'C',
-    Ď: 'D',
-    Đ: 'D',
-    É: 'E',
-    È: 'E',
-    Ê: 'E',
-    Ë: 'E',
-    Ě: 'E',
-    Ę: 'E',
-    Ē: 'E',
-    Í: 'I',
-    Ì: 'I',
-    Î: 'I',
-    Ï: 'I',
-    Ī: 'I',
-    Ł: 'L',
-    Ñ: 'N',
-    Ń: 'N',
-    Ň: 'N',
-    Ó: 'O',
-    Ò: 'O',
-    Ô: 'O',
-    Õ: 'O',
-    Ö: 'O',
-    Ø: 'O',
-    Ō: 'O',
-    Ř: 'R',
-    Ŕ: 'R',
-    Š: 'S',
-    Ś: 'S',
-    Ş: 'S',
-    Ť: 'T',
-    Ú: 'U',
-    Ù: 'U',
-    Û: 'U',
-    Ü: 'U',
-    Ů: 'U',
-    Ū: 'U',
-    Ý: 'Y',
-    Ÿ: 'Y',
-    Ž: 'Z',
-    Ź: 'Z',
-    Ż: 'Z'
-  }
-  return text.replace(
-    /[áàâãäåąāčçćďđéèêëěęēíìîïīłñńňóòôõöøōřŕšśşßťúùûüůūýÿžźżÁÀÂÃÄÅĄĀČÇĆĎĐÉÈÊËĚĘĒÍÌÎÏĪŁÑŃŇÓÒÔÕÖØŌŘŔŠŚŞŤÚÙÛÜŮŪÝŸŽŹŻ]/g,
-    function (match) {
-      return diacritics[match]
-    }
-  )
-}
+
+export const removeDiacritics = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
