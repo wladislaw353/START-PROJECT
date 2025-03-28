@@ -35,9 +35,9 @@ export const slideUp = (element, duration = 300) => {
   requestAnimationFrame(slideUpAnimation)
 }
 
-export const slideDown = (element, duration = 300) => {
+export const slideDown = (element, duration = 300, display = 'block') => {
   if (element.clientHeight === 0) {
-    element.style.display = 'block'
+    element.style.display = display
     element.style.overflow = 'hidden'
     const slideHeight = element.clientHeight
 
