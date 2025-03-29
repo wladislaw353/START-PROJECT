@@ -6,15 +6,15 @@
 import { slideDown, slideUp } from './smooth_func.js'
 
 export const to_top = () => {
-  const totopBtn = document.getElementById('totop')
+  const toTopBtn = document.getElementById('totop')
 
-  const toggleTotopButton = () => {
-    totopBtn.classList.toggle('active', window.scrollY > 700)
+  const toggleToTopButton = () => {
+    toTopBtn.classList.toggle('active', window.scrollY > 700)
   }
 
-  window.addEventListener('scroll', toggleTotopButton)
+  window.addEventListener('scroll', toggleToTopButton)
 
-  totopBtn.addEventListener('click', () => {
+  toTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     history.replaceState(null, null, ' ')
   })

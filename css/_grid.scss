@@ -1,7 +1,9 @@
 /* <div class="
     grid-container
     grid-col-4 grid-col-2[600] grid-col-3[1024]
-"> */
+
+    For grid item: .span-col-2, .span-row-2 ...
+*/
 
 $breakpoints: 1024, 950, 900, 850, 800, 600, 500;
 $max-cols: 4;
@@ -9,10 +11,13 @@ $max-cols: 4;
 .grid-container {
   display: grid;
 }
+
 @for $i from 1 through $max-cols {
   .grid-col-#{$i} {
     grid-template-columns: repeat($i, 1fr);
   }
+  .span-col-#{$i} {grid-column: span $i / auto}
+  .span-row-#{$i} {grid-row: span $i / auto}
 }
 
 @each $bp in $breakpoints {
@@ -24,10 +29,3 @@ $max-cols: 4;
     }
   }
 }
-
-.span-col-2 {grid-column: span 2 / auto}
-.span-col-3 {grid-column: span 3 / auto}
-.span-col-4 {grid-column: span 4 / auto}
-.span-row-2 {grid-row: span 2 / auto}
-.span-row-3 {grid-row: span 3 / auto}
-.span-row-4 {grid-row: span 4 / auto}
