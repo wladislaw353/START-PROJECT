@@ -25,7 +25,7 @@
  */
 
 export const sliders = () => {
-  const swipers = document.querySelectorAll('.swiper')
+  const swiper = document.querySelectorAll('.swiper')
 
   // Parse breakpoints from string format "[1200=3.5][950=2]"
   const parseBreakpoints = (input) => {
@@ -33,13 +33,12 @@ export const sliders = () => {
 
     if (input.includes('[') && input.includes('=')) {
       const breakpoints = {}
-      const regex = /\[(\d+)=([^[\]]+)\]/g
+      const regex = /\[(\d+)=([^[\]]+)]/g
       let match
 
       while ((match = regex.exec(input)) !== null) {
         const breakpoint = parseInt(match[1], 10)
-        const value = match[2].includes('.') ? parseFloat(match[2]) : parseInt(match[2], 10)
-        breakpoints[breakpoint] = value
+        breakpoints[breakpoint] = match[2].includes('.') ? parseFloat(match[2]) : parseInt(match[2], 10)
       }
 
       return Object.keys(breakpoints).length > 0 ? breakpoints : null
@@ -48,7 +47,7 @@ export const sliders = () => {
     return input.includes('.') ? parseFloat(input) : parseInt(input, 10)
   }
 
-  swipers.forEach(swiperElement => {
+  swiper.forEach(swiperElement => {
     const isMobileOnly = swiperElement.classList.contains('mobileOnly')
 
     const initializeSwiper = () => {
@@ -108,9 +107,17 @@ export const sliders = () => {
       }
 
       // Find pagination element
-      const paginationElement = swiperElement.querySelector('.swiper-pagination') ||
-      swiperElement.nextElementSibling?.classList.contains('swiper-pagination') ?
-          swiperElement.nextElementSibling : null
+      function getPaginationElement(swiperElement) {
+        let pagination = swiperElement.querySelector('.swiper-pagination');
+        if (!pagination && swiperElement.nextElementSibling) {
+          pagination = swiperElement.nextElementSibling.classList.contains('swiper-pagination')
+              ? swiperElement.nextElementSibling
+              : swiperElement.nextElementSibling.querySelector('.swiper-pagination');
+        }
+        return pagination;
+      }
+
+      const paginationElement = getPaginationElement(swiperElement);
 
       if (paginationElement) {
         swiperOptions.pagination = {
@@ -189,16 +196,12 @@ export const sliders = () => {
 
       // Parallax configuration
       if (swiperElement.hasAttribute('data-parallax')) {
-        // Enable the parallax effect
         swiperOptions.parallax = true;
 
-        // Упрощаем логику для parallax - без жестко заданных классов
         const slides = swiperElement.querySelectorAll('.swiper-slide');
         slides.forEach(slide => {
-          // Ищем элементы с атрибутом data-parallax
           const parallaxElements = slide.querySelectorAll('[data-parallax]');
           parallaxElements.forEach(el => {
-            // Если у элемента нет атрибута data-swiper-parallax, добавляем его
             if (!el.hasAttribute('data-swiper-parallax')) {
               const value = el.getAttribute('data-parallax') || '-100';
               el.setAttribute('data-swiper-parallax', value);
@@ -245,14 +248,14 @@ export const sliders = () => {
   })
 
   // Handle fullscreen sliders
-  const fullscreenSwipers = document.querySelectorAll('.swiper.fullscreen')
-  if (fullscreenSwipers.length) {
+  const fullscreenSwiper = document.querySelectorAll('.swiper.fullscreen')
+  if (fullscreenSwiper.length) {
     const updateSliderPadding = () => {
       const paddingElement = document.querySelector('.holder')
       if (!paddingElement) return
 
       const leftPadding = paddingElement.getBoundingClientRect().left
-      fullscreenSwipers.forEach(swiper => {
+      fullscreenSwiper.forEach(swiper => {
         swiper.style.paddingLeft = `${leftPadding}px`
       })
     }
