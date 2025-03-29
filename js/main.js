@@ -1,6 +1,6 @@
 import { em_engine } from './em_engine.js'
 import { sliders } from './sliders.js'
-import { social_share, helpers, is_iOS, get_utm, removeDiacritics, fixed_header } from './utils.js'
+import { social_share, helpers, is_iOS, get_utm, removeDiacritics, fixed_header, current_nav } from './utils.js'
 import { slideDown, slideUp, slideToggle } from './smooth_func.js'
 import { tabs, accordion, to_top } from './components.js'
 import { sticky_nav } from './sticky_nav.js'
@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   modal()
 
   fixed_header(100)
+
+  current_nav('active')
 
   form('send.php')
   
@@ -58,6 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
     header.classList.toggle('active')
     burger.classList.toggle('active')
   })
-
-  console.log(get_utm())
 })

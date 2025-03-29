@@ -83,6 +83,24 @@ export const fixed_header = (scroll) => {
   })
 }
 
+// highlight current page in nav
+export const current_nav = activeClass => {
+  const navLinks = document.querySelectorAll('nav a')
+  const normalizePath = path => path.replace(/\/$/, '')
+  const currentPath = normalizePath(window.location.pathname)
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href')?.trim()
+    if (!href) return
+    const li = link.closest('li')
+    if (!li) return
+    li.classList.remove(activeClass)
+    const linkUrl = new URL(link.href, document.baseURI)
+    if (normalizePath(linkUrl.pathname) === currentPath) {
+      li.classList.add(activeClass)
+    }
+  })
+}
+
 export const is_iOS = () => {
   const userAgent = window.navigator.userAgent.toLowerCase()
   return /iphone|ipad|ipod/.test(userAgent)
@@ -98,6 +116,5 @@ export const get_utm = () => {
     utm_term: params.get('utm_term') || ''
   }
 }
-
 
 export const removeDiacritics = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
