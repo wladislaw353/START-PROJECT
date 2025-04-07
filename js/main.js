@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   current_nav('active')
 
-  form('send.php')
+  form('/send.php')
   
   number_anim()
 
