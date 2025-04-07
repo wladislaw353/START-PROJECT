@@ -9,7 +9,7 @@ $lang_input_names = array(
     'target' => 'Target',
 );
 
-$title_text = 'Website Form Submission';
+$title_text = 'New submission: ' . $_SERVER['SERVER_NAME'];
 
 # E-mail for errors
 $dev_mail = '@gmail.com';
@@ -24,6 +24,7 @@ $to_email = true;
 $send_to_mail = '';
 
 # SMTP Configuration (optional)
+# Include PHPMailer at 60 line
 $use_smtp = false;
 $smtp_config = [
     'host' => 'smtp.example.com',
@@ -144,7 +145,7 @@ function sendErrorToDev($error_msg)
         $dev_mail,
         'Form Submission Error',
         $error_msg,
-        "From: site@{$_SERVER['SERVER_NAME']}\r\nContent-type: text/html; charset=utf-8"
+        "From: status@{$_SERVER['SERVER_NAME']}\r\nContent-type: text/html; charset=utf-8"
     );
 }
 
@@ -193,13 +194,15 @@ if ($to_email) {
 
             if (!$mail->send()) {
                 sendErrorToDev("SMTP sending error: {$mail->ErrorInfo}");
+                echo json_encode(['success' => false, 'error' => 'Target: SMTP']);
             }
         } catch (Exception $e) {
             sendErrorToDev("SMTP error: {$e->getMessage()}");
+            echo json_encode(['success' => false, 'error' => 'Target: SMTP']);
         }
     }
     elseif (!empty($uploaded_files)) {
-        $from = 'order' . rand(1000, 10000) . '@' . $_SERVER['SERVER_NAME'];
+        $from = 'no-reply@' . $_SERVER['SERVER_NAME'];
         $boundary = md5(time());
         $headers = "From: $from\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
@@ -223,13 +226,15 @@ if ($to_email) {
 
         if (!mail($send_to_mail, $title_text, $body, $headers)) {
             sendErrorToDev("Regular mail sending error to: $send_to_mail");
+            echo json_encode(['success' => false, 'error' => 'Target: Mail sending with files']);
         }
     }
     else {
-        $from = 'order' . rand(1000, 10000) . '@' . $_SERVER['SERVER_NAME'];
+        $from = 'no-reply@' . $_SERVER['SERVER_NAME'];
         $headers = "From: $from\r\nContent-type: text/html; charset=utf-8";
         if (!mail($send_to_mail, $title_text, $msg, $headers)) {
             sendErrorToDev("Regular mail sending error to: $send_to_mail");
+            echo json_encode(['success' => false, 'error' => 'Target: Email']);
         }
     }
 }
@@ -266,6 +271,7 @@ if ($to_telegram && !empty($tg_token) && !empty($tg_chatID)) {
 
     if (!curl_exec($ch)) {
         sendErrorToDev('Telegram sending error: ' . curl_error($ch));
+        echo json_encode(['success' => false, 'error' => 'Target: Telegram']);
     }
     curl_close($ch);
 
@@ -286,6 +292,7 @@ if ($to_telegram && !empty($tg_token) && !empty($tg_chatID)) {
             ]);
             if (!curl_exec($ch)) {
                 sendErrorToDev('Telegram document sending error: ' . curl_error($ch));
+                echo json_encode(['success' => false, 'error' => 'Target: Telegram files sending']);
             }
             curl_close($ch);
         }
@@ -334,6 +341,7 @@ if ($to_lp && !empty($lp_api_key) && !empty($lp_domain)) {
 
     if (!curl_exec($curl)) {
         sendErrorToDev('LP CRM sending error: ' . curl_error($curl));
+        echo json_encode(['success' => false, 'error' => 'Target: LpCrm']);
     }
     curl_close($curl);
 }
@@ -373,6 +381,7 @@ if ($to_keycrm && !empty($keycrm_token)) {
 
     if (!curl_exec($ch)) {
         sendErrorToDev('Key CRM sending error: ' . curl_error($ch));
+        echo json_encode(['success' => false, 'error' => 'Target: Key CRM']);
     }
     curl_close($ch);
 }
