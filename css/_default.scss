@@ -16,7 +16,7 @@ table {
     border-collapse: collapse;
 }
 pre, code, kbd, samp {
-    font-family: monospace, monospace;
+    font-family: monospace;
 }
 iframe, video {
     display: block;
@@ -28,28 +28,27 @@ html {
     tab-size: 4;
 }
 a, area, button, input, label, select, summary, textarea, [tabindex] {
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
-  }
+}
 img {
     display: block;
     max-width: 100%;
     height: auto;
 }
 path {
-    transition: all .3s ease;
+    transition: all .3s ease-in-out;
 }
 a {
     color: inherit;
     display: inline-block;
     text-decoration: none;
-    transition: all .3s ease;
+    transition: all .3s ease-in-out;
     &.anchor {
         cursor: pointer;
     }
 }
 section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: var(--scroll-margin-top);
     padding: em(120) 0;
     @include _500 {
         padding: em(60) 0;

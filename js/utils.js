@@ -58,16 +58,25 @@ export const helpers = () => {
 
 // <main> min-height
 function setMainMinHeight() {
-  const main = document.querySelector('main');
-  if (!main) return;
-  const header = document.querySelector('header');
-  const footer = document.querySelector('footer');
-  const headerHeight = header ? header.offsetHeight : 0;
-  const footerHeight = footer ? footer.offsetHeight : 0;
-  main.style.minHeight = `${window.innerHeight - headerHeight - footerHeight}px`;
+  const main = document.querySelector('main')
+  if (!main) return
+  const header = document.querySelector('header')
+  const footer = document.querySelector('footer')
+  const headerHeight = header ? header.offsetHeight : 0
+  const footerHeight = footer ? footer.offsetHeight : 0
+  main.style.minHeight = `${window.innerHeight - headerHeight - footerHeight}px`
 }
 setMainMinHeight()
-window.addEventListener('resize', setMainMinHeight);
+window.addEventListener('resize', setMainMinHeight)
+
+// --scroll-margin-top
+function updateScrollMarginTop() {
+  const header = document.querySelector('header')
+  const headerHeight = header ? header.offsetHeight : 0
+  document.documentElement.style.setProperty('--scroll-margin-top', `${headerHeight + 15}px`)
+}
+updateScrollMarginTop()
+window.addEventListener('resize', updateScrollMarginTop)
 
 export const fixed_header = (scroll) => {
   window.addEventListener('scroll', () => {
