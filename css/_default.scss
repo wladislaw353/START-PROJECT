@@ -89,9 +89,18 @@ section {
     justify-content: flex-end;
 }
 .hidden {
-    display: none;
+    display: none !important;
 }
-
+.hiddenMobile {
+    @include _767 {
+        display: none !important;
+    }
+}
+.hiddenDesktop {
+    @include _767min {
+        display: none !important;
+    }
+}
 [data-modal-opener],
 [data-modal-closer] {
     cursor: pointer;
