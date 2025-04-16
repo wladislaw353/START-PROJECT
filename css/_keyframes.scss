@@ -29,6 +29,9 @@
 [data-animate] {
 	opacity: 0;
 	will-change: transform;
+	&[data-animate-mobile-off] {
+		opacity: 1;
+	}
 }
 
 .animated {

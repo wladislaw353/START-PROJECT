@@ -5,6 +5,8 @@
     class - string, required
     delay - float, optional
 
+  Add data-animate-mobile-off to off animation on Mobile
+
   Animate class in config below. Default: animated
  */
 
@@ -54,6 +56,6 @@ export const scroll_anim = () => {
         threshold: config.threshold
     })
 
-    document.querySelectorAll('[data-animate]')
+    document.querySelectorAll('[data-animate]:not([data-animate-mobile-off])')
         .forEach(element => !animatedElements.has(element) && observer.observe(element))
 }
