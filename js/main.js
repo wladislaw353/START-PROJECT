@@ -8,6 +8,7 @@ import { modal, openModal, closeModal } from './modal.js'
 import { form } from './form.js'
 import { number_anim } from './number_anim.js'
 import { scroll_anim } from './scroll_anim.js'
+import { cursor_move_anim } from './cursor_move_anim.js'
 import { phone_mask } from './phone_mask.js'
 
 em_engine()
