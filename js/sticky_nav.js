@@ -9,13 +9,12 @@ export const sticky_nav = () => {
   // STICKY NAV SCROLL
   const sections = document.querySelectorAll('.js-nav-trigger[id], h2[id], h3[id], h4[id]')
   const navLinksContainer = document.querySelector('.sticky-nav')
+
   const getCurrentSection = () => {
-    const scrollPosition = window.scrollY - window.innerHeight / 2
-    return Array.from(sections).find(section => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.offsetHeight
-      return scrollPosition >= sectionTop && scrollPosition <= sectionTop + sectionHeight
-    })
+    const centerPosition = window.scrollY + window.innerHeight / 2
+    return Array.from(sections)
+        .filter(section => section.offsetTop <= centerPosition)
+        .pop()
   }
 
   const updateActiveLink = () => {
