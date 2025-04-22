@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
   current_nav('active')
 
   form('/send.php')
-  
-  number_anim()
 
   sliders()
 
   accordion()
+
+  tabs()
 
   to_top()
   
