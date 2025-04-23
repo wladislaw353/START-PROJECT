@@ -48,6 +48,12 @@ export const sticky_nav = () => {
         const targetId = event.target.getAttribute('href')
         const targetElement = document.querySelector(targetId)
 
+        const header = this.closest('header')
+        const burger = header?.querySelector('.burger')
+        if (header && burger?.classList.contains('active')) {
+          burger.click()
+        }
+
         if (targetElement) {
           targetElement.scrollIntoView({
             behavior: 'smooth',
