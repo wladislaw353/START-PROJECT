@@ -45,7 +45,6 @@
     }
 }
 
-
 textarea {
     resize: vertical;
     min-height: em(85);
@@ -60,9 +59,27 @@ input, textarea, select {
     padding: em(18) 0;
     font-size: em(16);
     margin-bottom: em(10);
+    font-family: inherit;
     $placeholder_color: #BDBDBD;
     &:focus {
         border-color: #9A762D;
+    }
+    &[type="file"] {
+        &::file-selector-button {
+            background-color: #B0D2AB;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        &::-webkit-file-upload-button {
+            background-color: #9A762D;
+            color: #fff;
+            padding: em(4) em(13);
+            border-radius: 6px;
+            border: 1px solid #9A762D;
+            cursor: pointer;
+        }
     }
     &[type='date'] {
         appearance: unset;
