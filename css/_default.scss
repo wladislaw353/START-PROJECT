@@ -92,12 +92,12 @@ section {
     display: none !important;
 }
 .hiddenMobile {
-    @include _767 {
+    @include _800 {
         display: none !important;
     }
 }
 .hiddenDesktop {
-    @include _767min {
+    @include _800min {
         display: none !important;
     }
 }
