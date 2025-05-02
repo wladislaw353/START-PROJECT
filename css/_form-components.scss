@@ -187,6 +187,60 @@ input, textarea, select {
             }
         }
     }
+    &[type=range] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 18px;
+        border: none;
+        border-radius: 4px;
+        overflow: hidden;
+        background: transparent;
+        &::-webkit-slider-runnable-track {
+            height: 4px;
+            border-radius: 4px;
+            background: #E9E9E9;
+            border: none;
+            box-shadow: 0 0 0 #353535;
+        }
+        &::-moz-range-track {
+            height: 4px;
+            border-radius: 4px;
+            background: #E9E9E9;
+            border: none;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #9A762D;
+            border: 0 solid #9A762D;
+            border-radius: 50%;
+            height: 18px;
+            width: 18px;
+            margin-top: -7px;
+            box-shadow: calc(-100vmax - 18px) 0 0 100vmax #9A762D;
+            clip-path: polygon(
+                            100% 0,
+                            2px 0,
+                            0 7px,
+                            -100vmax 7px,
+                            -100vmax 11px,
+                            0 11px,
+                            2px 100%,
+                            100% 100%
+            );
+        }
+        &::-moz-range-thumb {
+            -moz-appearance: none;
+            appearance: none;
+            background-color: #9A762D;
+            border: 0px solid #9A762D;
+            border-radius: 50%;
+            height: 18px;
+            width: 18px;
+        }
+    }
 }
 
 select {
