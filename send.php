@@ -1,13 +1,13 @@
 <?php
 # =========== CONFIG ==========================================================================
 
-$lang_input_names = array(
-    'fname' => 'Name',
-    'phone' => 'Phone',
-    'email' => 'E-mail',
+$lang_input_names = [
+    'fname'   => 'Name',
+    'phone'   => 'Phone',
+    'email'   => 'E-mail',
     'comment' => 'Comment',
-    'target' => 'Target',
-);
+    'target'  => 'Target',
+];
 
 $title_text = 'New submission: ' . $_SERVER['SERVER_NAME'];
 
@@ -27,12 +27,12 @@ $send_to_mail = '';
 # Include PHPMailer at 60 line
 $use_smtp = false;
 $smtp_config = [
-    'host' => 'smtp.example.com',
+    'host' => '',
     'port' => 587,
     'username' => '',
     'password' => '',
-    'from_email' => '',
-    'secure' => 'ssl' // ssl/tls
+    'from_email' => "no-reply@{$_SERVER['SERVER_NAME']}",
+    'secure' => 'tls' // ssl/tls
 ];
 
 #-🔸-Telegram --------------------------------------------------------------------------------
@@ -171,9 +171,9 @@ if ($to_email) {
     }
     $msg .= '</table>' . $user_info_html;
 
-    if ($use_smtp && class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+    if ($use_smtp && class_exists(PHPMailer::class)) {
         try {
-            $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+            $mail = new PHPMailer(true);
             $mail->isSMTP();
             $mail->Host = $smtp_config['host'];
             $mail->SMTPAuth = true;
@@ -199,6 +199,11 @@ if ($to_email) {
         } catch (Exception $e) {
             sendErrorToDev("SMTP error: {$e->getMessage()}");
             echo json_encode(['success' => false, 'error' => 'Target: SMTP']);
+            exit;
+        } catch (\Exception $e) {
+            sendErrorToDev("General error: {$e->getMessage()}");
+            echo json_encode(['success' => false, 'error' => 'General error']);
+            exit;
         }
     }
     elseif (!empty($uploaded_files)) {
