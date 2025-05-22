@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else scroll_anim()
 
   // GALLERY
-  Fancybox.bind('[data-fancybox="gallery"]', {
+  Fancybox.bind('[data-fancybox*="gallery"]', {
     infinite: false,
     hideClass: 'f-zoomOutDown',
     Thumbs: {
