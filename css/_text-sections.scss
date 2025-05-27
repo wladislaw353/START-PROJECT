@@ -2,7 +2,6 @@
 @import '_media-queries.scss';
 
 section.seo-text {
-  $base-font-size: 16;
   font-size: em($base-font-size);
   color: #000;
   // letter-spacing: em(1);
