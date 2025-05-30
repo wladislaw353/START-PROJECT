@@ -54,6 +54,17 @@ export const helpers = () => {
       childList: true, characterData: true, subtree: true
     })
   })
+
+  // CUSTOM INVALID TEXT
+  document.querySelectorAll('form').forEach(form => {
+    form.querySelectorAll('[required]').forEach(field => {
+      const msg = field.dataset.invalid
+      if (msg) {
+        field.addEventListener('invalid', () => field.setCustomValidity(msg))
+        field.addEventListener('input', () => field.setCustomValidity(''))
+      }
+    })
+  })
 }
 
 // <main> min-height
